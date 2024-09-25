@@ -8,7 +8,7 @@ export default function Dashboard() {
         <div className="wd-dashboard-course">
           <Link className="wd-dashboard-course-link"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} />
+            <img src="/images/reactjs.jpg" alt="React logo" width={200} />
             <div>
               <h5>
               CS1234 React JS
@@ -24,7 +24,7 @@ export default function Dashboard() {
         {/* Course 2 : Computer Systems */}
         <Link className="wd-dashboard-course-link"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} />
+            <img src="/images/reactjs.jpg" alt="React logo" width={200} />
             <div>
               <h5>
               CS3650 Computer Systems
@@ -40,7 +40,7 @@ export default function Dashboard() {
             {/* Course 3 : Linear Algebra */}
         <Link className="wd-dashboard-course-link"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} />
+            <img src="/images/reactjs.jpg" alt="React logo" width={200} />
             <div>
               <h5>
               MATH2331 Linear Algebra
@@ -56,7 +56,7 @@ export default function Dashboard() {
             {/* Course 4 : Professional Development */}
         <Link className="wd-dashboard-course-link"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} />
+            <img src="/images/reactjs.jpg" alt="React logo" width={200} />
             <div>
               <h5>
               CS1210 Professional Development
@@ -72,7 +72,7 @@ export default function Dashboard() {
             {/* Course 5 : Corruption, Integrity, and Accountability */}
         <Link className="wd-dashboard-course-link"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} />
+            <img src="/images/reactjs.jpg" alt="React logo" width={200} />
             <div>
               <h5>
               CRIM1500 Corruption, Integrity, and Accountability
@@ -88,7 +88,7 @@ export default function Dashboard() {
             {/* Course 6 : Mathematics of Data Models */}
         <Link className="wd-dashboard-course-link"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} />
+            <img src="/images/reactjs.jpg" alt="React logo" width={200} />
             <div>
               <h5>
               CS2810 Mathematics of Data Models
@@ -105,7 +105,7 @@ export default function Dashboard() {
             {/* Course 7 : Fundamentals of Computer Science 1 */}
         <Link className="wd-dashboard-course-link"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} />
+            <img src="/images/reactjs.jpg" alt="React logo" width={200} />
             <div>
               <h5>
               CS2500 Fundamentals of Computer Science 1
