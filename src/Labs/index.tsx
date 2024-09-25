@@ -8,7 +8,9 @@ export default function Labs() {
   return (
     <div id="wd-labs">
       <h1>Labs</h1>
-      My Name is Roslyn Maloney
+      My Name is Roslyn Maloney <br/>
+      <a href="https://github.com/roslyn-maloney/kanbas-react-web-app.git">Github Link</a><br/>
+      Section 1
       <TOC />
       <Routes>
         <Route path="/" element={<Navigate to="Lab1" />} />
