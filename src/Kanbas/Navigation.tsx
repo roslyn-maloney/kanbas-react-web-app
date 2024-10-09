@@ -3,11 +3,12 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
-import { FaCog } from "react-icons/fa";
+import { useLocation } from "react-router";
 
 export default function KanbasNavigation() {
+  const { pathname } = useLocation();
   return (
-    <div id="wd-kanbas-navigation" style={{ width: 120 }}
+    <div id="wd-kanbas-navigation" style={{ width: 110 }}
       className="list-group rounded-0 position-fixed
          bottom-0 top-0 d-none d-md-block bg-black z-2">
       <a id="wd-neu-link" target="_blank"
@@ -46,3 +47,6 @@ export default function KanbasNavigation() {
     </div>
   );
 }
+
+
+// implement the changing of the active link

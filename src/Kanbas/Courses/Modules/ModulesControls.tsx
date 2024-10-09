@@ -1,6 +1,7 @@
 import { FaPlus } from "react-icons/fa6";
 
 import GreenCheckmark from "./GreenCheckmark";
+import BackgroundColors from "../../../Labs/Lab2/BackgroundColors";
 export default function ModulesControls() {
     return (
         <div id="wd-modules-controls" className="text-nowrap">
@@ -39,7 +40,14 @@ export default function ModulesControls() {
                     </li>
                 </ul>
             </div>
-            {/* Implement the View Progress and Collapse All buttons with IDs wd-view-progress and wd-collapse-all */}
+
+            {/* implementing that view progress button */}
+            <button id="wd-view-progress" className="btn btn-lg btn-secondary me-1 float-end">
+                View Progress</button>
+
+            {/* implementing that collapse all button */}
+            <button id="wd-collapse-all" className="btn btn-lg btn-secondary me-1 float-end">
+                Collapse All</button>
         </div>
     );
 }

@@ -7,6 +7,7 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
   }
 }
 
+/* makes the course navigation formatting  */
 .list-group.wd > .list-group-item.active {
     color: black;
     background-color: white;
@@ -28,4 +29,37 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
   .wd-lesson {
     border-left: 3px solid green !important;
   }
+
+  /* the button at the button of the profile page */
+  .btn-crimson {
+    background-color: crimson;
+    color: white; /* Optional: Change text color for better contrast */
+}
+ /* makes the account navigation format */
+.account-group.wd > .account-group-item.active {
+  color: black;
+  background-color: white;
+  border-left: 2px solid black !important;
+}
+
+
+/* styling for the assignments page */
+.btn-secondary {
+  --bs-btn-color: #000 !important;
+  --bs-btn-bg: #c7cdd1 !important;
+  --bs-btn-border-color: #c7cdd1 !important;
+  --bs-btn-hover-color: #fff !important;
+}
+.bg-secondary {
+  --bs-secondary-rgb: 199, 205, 209;
+}
+.list-group-item {
+  --bs-list-group-border-color: gray;
+}
+.wd-hw {
+  border-left: 3px solid green !important;
+}
+
+
+
   

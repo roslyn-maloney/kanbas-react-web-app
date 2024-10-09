@@ -2,6 +2,12 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
 import { LiaFileImportSolid } from "react-icons/lia";
+import { IoMdHome } from "react-icons/io";
+import { GiNetworkBars } from "react-icons/gi";
+import { FaBullhorn } from "react-icons/fa";
+import { CiBellOn } from "react-icons/ci";
+
+
 {/* Find more icons */ }
 export default function CourseStatus() {
   return (
@@ -21,7 +27,21 @@ export default function CourseStatus() {
         <BiImport className="me-2 fs-5" /> Import Existing Content </button>
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </button>
-      {/* Complete the rest of the buttons */}
+      {/* Choose Home page */}
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <IoMdHome className="me-2 fs-5" /> Choose Home Page </button>
+      {/* Veiw Corse Screen */}
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <GiNetworkBars className="me-2 fs-5" /> View Course Screen </button>
+      {/* New Announcement */}
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <FaBullhorn className="me-2 fs-5" /> New Announcement </button>
+      {/* New Analytics */}
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <GiNetworkBars className="me-2 fs-5" /> New Analytics </button>
+      {/* View Course Notifications */}
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <CiBellOn className="me-2 fs-5" /> View Course Notifications </button>
     </div>
   );
 }

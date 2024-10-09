@@ -6,12 +6,6 @@ import ModuleControlButtons from "./ModuleControlButtons";
 export default function Modules() {
   return (
     <div>
-      {/* buttons at the top of the screen */}
-      <button>Collapse All</button><button>View Progress</button> <select>
-        <option value="All" selected>Publish All</option>
-        <option value="Week 1">Publish Week 1</option>
-        <option value="Week 2">Publish Week 2</option>
-      </select><button>+ Module</button>
       <div>
         <ModulesControls /><br /><br /><br /><br />
         <ul id="wd-modules" className="list-group rounded-0">

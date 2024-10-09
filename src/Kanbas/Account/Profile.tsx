@@ -38,13 +38,12 @@ export default function Profile() {
           <option value="ADMIN">Admin</option>
           <option value="FACULTY">Faculty</option>
           <option value="STUDENT">Student</option>
-        </select>
+        </select> 
 
         <Link id="wd-signin-btn"
           to="/Kanbas/Account/Signin"
-          className="btn btn-primary w-100">
+          className="btn btn-crimson w-100">
           Sign out </Link>
-        <Link id="wd-signin-link" to="/Kanbas/Account/Signin">Sign out</Link>
       </div>
   );
 }
