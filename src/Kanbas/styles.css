@@ -1,5 +1,11 @@
-body   {  margin: 0;  padding: 0;  }
-body * {  font-family: Arial, Helvetica, sans-serif;  }
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body * {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 @media (min-width: 768px) {
   #wd-kanbas .wd-main-content-offset {
@@ -8,35 +14,40 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
 }
 
 /* makes the course navigation formatting  */
-.list-group.wd > .list-group-item.active {
-    color: black;
-    background-color: white;
-    border-left: 3px solid black !important;
-  }
-
-  .btn-secondary {
-    --bs-btn-color: #000 !important;
-    --bs-btn-bg: #c7cdd1 !important;
-    --bs-btn-border-color: #c7cdd1 !important;
-    --bs-btn-hover-color: #fff !important;
-  }
-  .bg-secondary {
-    --bs-secondary-rgb: 199, 205, 209;
-  }
-  .list-group-item {
-    --bs-list-group-border-color: gray;
-  }
-  .wd-lesson {
-    border-left: 3px solid green !important;
-  }
-
-  /* the button at the button of the profile page */
-  .btn-crimson {
-    background-color: crimson;
-    color: white; /* Optional: Change text color for better contrast */
+.list-group.wd>.list-group-item.active {
+  color: black;
+  background-color: white;
+  border-left: 3px solid black !important;
 }
- /* makes the account navigation format */
-.account-group.wd > .account-group-item.active {
+
+.btn-secondary {
+  --bs-btn-color: #000 !important;
+  --bs-btn-bg: #c7cdd1 !important;
+  --bs-btn-border-color: #c7cdd1 !important;
+  --bs-btn-hover-color: #fff !important;
+}
+
+.bg-secondary {
+  --bs-secondary-rgb: 199, 205, 209;
+}
+
+.list-group-item {
+  --bs-list-group-border-color: gray;
+}
+
+.wd-lesson {
+  border-left: 3px solid green !important;
+}
+
+/* the button at the button of the profile page */
+.btn-crimson {
+  background-color: crimson;
+  color: white;
+  /* Optional: Change text color for better contrast */
+}
+
+/* makes the account navigation format */
+.account-group.wd>.account-group-item.active {
   color: black;
   background-color: white;
   border-left: 2px solid black !important;
@@ -50,16 +61,99 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
   --bs-btn-border-color: #c7cdd1 !important;
   --bs-btn-hover-color: #fff !important;
 }
+
 .bg-secondary {
   --bs-secondary-rgb: 199, 205, 209;
 }
+
 .list-group-item {
   --bs-list-group-border-color: gray;
 }
+
 .wd-hw {
   border-left: 3px solid green !important;
 }
 
 
+.wd-rounded-corners-all-around {
+  float: right;
+  position: relative;
+  bottom: 15px;
+  right: 100px;
+  padding: 5px;
+  font-size: 15px;
+}
 
+
+#a-title {
+  font-size: 13pt;
+  font-weight: lighter;
+}
+
+#wd-name {
+  width: 100%;
+}
+
+#wd-description {
+  width: 100%;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.padding {
+  padding: 5px;
+}
+
+#cancel-bt {
+  border-color: gray;
+  border-width: 1px;
+  background-color: rgb(231, 231, 231);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: right;
+}
+
+#save-bt {
+  border-color: gray;
+  border-width: 1px;
+  color: white;
+  background-color: crimson;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: right;
+}
+
+#editor-table {
+  margin-left: 10%;
+}
+
+.red-text{
+  color: red;
+}
+
+
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-container input {
+  border-radius: 10px;
+  padding-left: 30px; /* Adjust padding for icon */
+  width: 250px; /* Set a width for the input */
+}
+
+.search-icon {
+  position: relative;
+  left: 20px;
+  z-index: 2
+}
+
+.wd-side-icon{
+  position:relative;
+  left: 950px;
+  bottom:10px
   
+}

@@ -146,7 +146,3 @@ export default function Dashboard() {
     </div>
   );
 }
-
-
-// render the images (find better images)
-// wrap the courses around each other so that they can be same size
