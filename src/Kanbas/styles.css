@@ -133,7 +133,6 @@ body * {
   color: red;
 }
 
-
 .search-container {
   position: relative;
   display: inline-block;
@@ -157,3 +156,16 @@ body * {
   bottom:10px
   
 }
+
+.wd-dashboard-course-title-card-title {
+  white-space: nowrap;
+}
+
+.overflow-hidden {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
+
+
+

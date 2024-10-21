@@ -29,31 +29,34 @@ export default function Assignments() {
             <div className="wd-title p-3 ps-2 bg-secondary">
               <BsGripVertical className="me-2 fs-3" />
               ASSIGNMENTS
-
-
               <p className="wd-rounded-corners-all-around 
                 wd-border-thin wd-border-gray wd-border-solid  small-text">
                 40% of Total
               </p>
               <FaPlus className="wd-side-icon" />
+              <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /> <PiNotebookThin className="me-2 fs-3" />
+                <a className="wd-assignment-link"
+                  href="#/Kanbas/Courses/1234/Assignments/123">
+                  A1
+                </a><br /> <LessonControlButtons />
+                <p>
+                  <span className="red-text">Multiple Modules</span> |
+                  <b> Not available until</b> May 6 at 12:00am |<br />
+                  <b>Due</b> May 13 at 11:59pm | 100pts
+                </p>
+              </li>
 
               <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /> <PiNotebookThin className="me-2 fs-3" /> <a className="wd-assignment-link"
                 href="#/Kanbas/Courses/1234/Assignments/123">
-                A1
-              </a><LessonControlButtons /><br />
-                <span className="red-text">Multiple Modules</span> |
-                <b> Not available until</b> May 6 at 12:00am |<br />
-                <b>Due</b> May 13 at 11:59pm | 100pts
-              </li>
-              <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /> <PiNotebookThin className="me-2 fs-3" /> <a className="wd-assignment-link"
-                href="#/Kanbas/Courses/1234/Assignments/123">
                 A2
-              </a><LessonControlButtons /><br /> <span className="red-text">Multiple Modules</span> | <b>Not available until</b> May 13 at 12:00am |<br />
+              </a><br /> <LessonControlButtons />
+                <span className="red-text">Multiple Modules</span> | <b>Not available until</b> May 13 at 12:00am |<br />
                 <b>Due</b> May 20 at 11:59pm | 100pts</li>
               <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /> <PiNotebookThin className="me-2 fs-3" /> <a className="wd-assignment-link"
                 href="#/Kanbas/Courses/1234/Assignments/123">
                 A3
-              </a><LessonControlButtons /><br /> <span className="red-text">Multiple Modules</span> | <b>Not available until</b> May 20 at 12:00am |<br />
+              </a><br /> <LessonControlButtons />
+                <span className="red-text">Multiple Modules</span> | <b>Not available until</b> May 20 at 12:00am |<br />
                 <b>Due</b> May 27 at 11:59pm | 100pts </li>
             </div>
           </li>
