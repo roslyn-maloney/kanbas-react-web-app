@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useParams } from "react-router";
 import Home from "./Home";
 import Modules from "./Modules";
 import PeopleTable from "./People/Table";
@@ -6,11 +6,16 @@ import CoursesNavigation from "./Navigation";
 import Assignments from "./Assignments";
 import { FaAlignJustify } from "react-icons/fa6";
 import Editor from "./Assignments/Editor"
+import { courses } from "../Database";
 
 export default function Courses() {
+  const { cid } = useParams();
+  const course = courses.find((course) => course._id === cid);
   return (
     <div id="wd-courses">
-      <h2 className="text-danger"> <FaAlignJustify className="me-4 fs-4 mb-1" /> Course 1234</h2>
+      <h2 className="text-danger"> 
+      <FaAlignJustify className="me-4 fs-4 mb-1" /> 
+      {course && course.name}</h2>
       <div className="d-flex">
         <div>
           <CoursesNavigation />
