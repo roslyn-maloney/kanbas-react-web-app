@@ -14,7 +14,8 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-                <img src="/images/react.png" width="100%" height={160} />
+                  {/* image not working */}
+                <img src="/images/course1.jpeg" width="100%" height={160} />
                 <div className="card-body overflow-hidden">
                   <h5 className="wd-dashboard-course-title card-title overflow-hidden">
                     CS1234 React JS
@@ -33,7 +34,7 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/4550/Home">
-                <img src="/images/react.png" width="100%" height={160} />
+                <img src="/images/course2.jpeg" width="100%" height={160} />
                 <div className="card-body overflow-hidden">
                   <h5 className="wd-dashboard-course-title card-title overflow-hidden">
                     CS3650 Computer Systems
@@ -51,7 +52,7 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/3000/Home">
-                <img src="/images/react.png" width="100%" height={160} />
+                <img src="/images/course3.jpeg" width="100%" height={160} />
                 <div className="card-body overflow-hidden">
                   <h5 className="wd-dashboard-course-title card-title overflow-hidden">
                     MATH2331 Linear Algebra 
@@ -70,7 +71,7 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/2242/Home">
-                <img src="/images/react.png" width="100%" height={160} />
+                <img src="/images/course4.jpeg" width="100%" height={160} />
                 <div className="card-body overflow-hidden">
                   <h5 className="wd-dashboard-course-title card-title overflow-hidden">
                     CS1210 Professional Development
@@ -89,7 +90,7 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/2262/Home">
-                <img src="/images/react.png" width="100%" height={160} />
+                <img src="/images/course5.jpeg" width="100%" height={160} />
                 <div className="card-body overflow-hidden">
                   <h5 className="wd-dashboard-course-title card-title overflow-hidden">
                     CRIM1500 Corruption, Integrity, and Accountability
@@ -108,7 +109,7 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/3500/Home">
-                <img src="/images/react.png" width="100%" height={160} />
+                <img src="/images/course6.jpeg" width="100%" height={160} />
                 <div className="card-body overflow-hidden">
                   <h5 className="wd-dashboard-course-title card-title overflow-hidden">
                     CS2810 Mathematics of Data Models
@@ -127,7 +128,7 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/4973/Home">
-                <img src="/images/react.png" width="100%" height={160} />
+                <img src="/images/course7.webp" width="100%" height={160} />
                 <div className="card-body overflow-hidden">
                   <h5 className="wd-dashboard-course-title card-title overflow-hidden">
                     CS2500 Fundamentals of Computer Science 1
