@@ -1,40 +1,51 @@
-import { useLocation } from "react-router";
+import path from "path";
+import { Link, useLocation } from "react-router-dom";
+
 export default function TOC() {
   const { pathname } = useLocation();
   return (
     <ul className="nav nav-pills">
+      {/* <li>{pathname}</li> */}
       <li className="nav-item">
-        <a id="wd-a" href="#/Labs" className="nav-link">
+        <Link className={`nav-link`} id="wd-a" to="/Labs">
           Labs
-        </a>
+        </Link>
       </li>
       <li className="nav-item">
-        <a id="wd-a1" href="#/Labs/Lab1"
-          className={`nav-link ${pathname.includes("Lab1") ? "active" : ""}`}>
+        <Link
+          className={`nav-link ${pathname.includes("Lab1") ? "active" : ""}`}
+          id="wd-a1"
+          to="/Labs/Lab1"
+        >
           Lab 1
-        </a>
+        </Link>
       </li>
       <li className="nav-item">
-        <a id="wd-a2" href="#/Labs/Lab2"
-          className={`nav-link ${pathname.includes("Lab2") ? "active" : ""}`}>
+        <Link
+          className={`nav-link ${pathname.includes("Lab2") ? "active" : ""}`}
+          id="wd-a2"
+          to="/Labs/Lab2"
+        >
           Lab 2
-        </a>
+        </Link>
       </li>
       <li className="nav-item">
-        <a id="wd-a3" href="#/Labs/Lab3"
-          className={`nav-link ${pathname.includes("Lab3") ? "active" : ""}`}>
+        <Link
+          className={`nav-link ${pathname.includes("Lab3") ? "active" : ""}`}
+          id="wd-a3"
+          to="/Labs/Lab3"
+        >
           Lab 3
-        </a>
+        </Link>
       </li>
       <li className="nav-item">
-        <a id="wd-k" href="#/Kanbas" className="nav-link">
+        <Link
+          className={`nav-link ${pathname.includes("Kanbas") ? "active" : ""}`}
+          id="wd-a3"
+          to="/Kanbas"
+        >
           Kanbas
-        </a>
-      </li>
-      <li className="nav-item">
-        <a id="wd-k" href="https://github.com/roslyn-maloney" className="nav-link">
-          My GitHub
-        </a>
+        </Link>
       </li>
     </ul>
   );
