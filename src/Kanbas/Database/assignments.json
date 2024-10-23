@@ -1,5 +1,15 @@
 [
-    { "_id": "A101", "title": "Propulsion Assignment", "course": "RS101" },
+    { "_id": "A101", 
+    "title": "Propulsion Assignment", 
+    "course": "RS101", 
+    "due": "12/13/2024", 
+    "assigned": "Everyone", 
+    "from": "12/1/2024", 
+    "points": "50", 
+    "group": "ASSIGNMENT",
+    "grade": "Percetage", 
+    "submission": "Online"},
+
     { "_id": "A102", "title": "Combustion Analysis", "course": "RS101" },
     { "_id": "A103", "title": "Nozzle Design Project", "course": "RS101" },
     { "_id": "A201", "title": "Aerodynamics Quiz", "course": "RS102" },

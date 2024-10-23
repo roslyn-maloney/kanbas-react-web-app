@@ -53,8 +53,7 @@ export default function Assignments() {
                 .map((assignment: any) => (
                   <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /> <PiNotebookThin className="me-2 fs-3" />
                      <Link
-                      to={`/Kanbas/Courses/${cid}/Assignments/${assignment.id}`}
-                      className="wd-assignment-link"
+                      to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                     >
                       {assignment.title}
                     </Link>

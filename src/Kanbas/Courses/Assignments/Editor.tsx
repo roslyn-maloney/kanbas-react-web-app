@@ -4,15 +4,15 @@ import * as db from "../../Database";
 
 
 export default function AssignmentEditor() {
-  const { cid } = useParams();
+  const { cid, aid } = useParams();
   const assignments = db.assignments;
-
+  
   return (
     <div id="wd-assignments-editor">
-
       {/* input for the assignment name */}
+
       {assignments
-        .filter((assignment: any) => assignment.course === cid)
+        .filter((assignment: any) => assignment._id == aid && assignment.course === cid)
         .map((assignment: any) => (
           <div className="mb-3"> <br />
             <label htmlFor="input1" className="form-label">
@@ -30,7 +30,6 @@ export default function AssignmentEditor() {
               The Kanbas application should include a link to navigate back to the landing page.
             </textarea> <br /> <br />
 
-
             {/* handels the points */}
             <table id="editor-table">
               <tr>
@@ -38,7 +37,7 @@ export default function AssignmentEditor() {
                   <label htmlFor="wd-points">Points</label>
                 </td>
                 <td>
-                  <input className="padding" id="wd-points" value={100} />
+                  <input className="padding" id="wd-points" value={assignment.points} />
                 </td>
               </tr><br />
 
@@ -49,7 +48,7 @@ export default function AssignmentEditor() {
                 </td>
                 <td>
                   <select name="wd-group" className="padding" id="wd-group">
-                    <option selected>Open this select menu</option>
+                    <option selected>{assignment.group}</option>
                     <option value="Assignments">ASSIGNMENTS</option>
                     <option value="Quizzes">QUIZESS</option>
                     <option value="Exams">EXAMS</option>
@@ -60,7 +59,7 @@ export default function AssignmentEditor() {
               {/* handles the type of grade */}
               <tr>
                 <td align="right" valign="top">
-                  <label htmlFor="wd-display-grade-as">Display grade as</label>
+                  <label htmlFor="wd-display-grade-as">{assignment.grade}</label>
                 </td>
                 <td>
                   <select name="wd-display-grade-as" className="padding" id="wd-display-grade-as">
@@ -72,7 +71,7 @@ export default function AssignmentEditor() {
 
               <tr>
                 <td align="right" valign="top">
-                  <label htmlFor="wd-submission-type">Submission Type</label>
+                  <label htmlFor="wd-submission-type">{assignment.submission}</label>
                 </td>
                 <td>
                   <select name="wd-submission-type" className="padding" id="submission-type">
@@ -116,12 +115,12 @@ export default function AssignmentEditor() {
                 </td>
                 <td style={{ border: '1px solid black', padding: '10px' }}>
                   <b>Assign to</b><br />
-                  <input className="padding" type="text" id="wd-assign-to" value={"Everyone"} />
+                  <input className="padding" type="text" id="wd-assign-to" value={assignment.assgined} />
                   <br /><br />
 
                   Due<br />
                   <div className="input-group">
-                    <input type="date" className="padding" />
+                    <input type="date" className="padding"  value={assignment.due}/>
                     <span className="input-group-text"><SlCalender /></span>
                   </div>
 
@@ -131,7 +130,7 @@ export default function AssignmentEditor() {
                       <td align="left">
                         Available from<br />
                         <div className="input-group">
-                          <input type="date" className="padding" />
+                          <input type="date" className="padding" value={assignment.from} />
                           <span className="input-group-text"><SlCalender /></span>
                         </div>
 
@@ -139,7 +138,7 @@ export default function AssignmentEditor() {
                       <td>
                         Until<br />
                         <div className="input-group">
-                          <input type="date" className="padding" />
+                          <input type="date" className="padding" value={assignment.due}/>
                           <span className="input-group-text"><SlCalender /></span>
                         </div>
                       </td>
@@ -148,7 +147,8 @@ export default function AssignmentEditor() {
                 </td>
               </tr>
             </table>
-          </div>))}
+          </div>
+        ))}
       <hr />
       <button className="bottom-buttons" id="save-bt">Save</button>
       <button className="bottom-buttons" id="cancel-bt">Cancel</button>
