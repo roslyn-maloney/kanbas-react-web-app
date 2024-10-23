@@ -37,7 +37,7 @@ export default function AssignmentEditor() {
                   <label htmlFor="wd-points">Points</label>
                 </td>
                 <td>
-                  <input className="padding" id="wd-points" value={assignment.points} />
+                  <input className="padding" id="wd-points" defaultValue={assignment.points} />
                 </td>
               </tr><br />
 
@@ -104,7 +104,7 @@ export default function AssignmentEditor() {
                   </div>
                   <div>
                     <input type="checkbox" id="wd-file-upload" name="wd-file-upload" value="file upload" />
-                    <label className="padding" htmlFor="wd-file-upload"> File Upload</label><br />
+                    <label className="padding" htmlFor="wd-file-upload">File Upload</label><br />
                   </div>
                 </td>
               </tr><br />
@@ -115,12 +115,12 @@ export default function AssignmentEditor() {
                 </td>
                 <td style={{ border: '1px solid black', padding: '10px' }}>
                   <b>Assign to</b><br />
-                  <input className="padding" type="text" id="wd-assign-to" value={assignment.assgined} />
+                  <input className="padding" type="text" id="wd-assign-to" defaultValue={assignment.assigned} />
                   <br /><br />
 
                   Due<br />
                   <div className="input-group">
-                    <input type="date" className="padding"  value={assignment.due}/>
+                    <input className="padding" defaultValue={assignment.due}/>
                     <span className="input-group-text"><SlCalender /></span>
                   </div>
 
@@ -130,7 +130,7 @@ export default function AssignmentEditor() {
                       <td align="left">
                         Available from<br />
                         <div className="input-group">
-                          <input type="date" className="padding" value={assignment.from} />
+                          <input className="padding" defaultValue={assignment.from} />
                           <span className="input-group-text"><SlCalender /></span>
                         </div>
 
@@ -138,7 +138,7 @@ export default function AssignmentEditor() {
                       <td>
                         Until<br />
                         <div className="input-group">
-                          <input type="date" className="padding" value={assignment.due}/>
+                          <input className="padding" value={assignment.due}/>
                           <span className="input-group-text"><SlCalender /></span>
                         </div>
                       </td>

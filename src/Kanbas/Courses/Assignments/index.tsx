@@ -60,8 +60,8 @@ export default function Assignments() {
                     <br /> <LessonControlButtons />
                     <p>
                       <span className="red-text">Multiple Modules</span> |
-                      <b> Not available until</b> May 6 at 12:00am |<br />
-                      <b>Due</b> May 13 at 11:59pm | 100pts
+                      <b> Not available until</b> {assignment.from} at 12:00am |<br />
+                      <b>Due</b> {assignment.due} | {assignment.points}pts
                     </p>
                   </li>
                 ))}
