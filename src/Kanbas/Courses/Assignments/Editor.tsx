@@ -1,12 +1,13 @@
 import { SlCalender } from "react-icons/sl";
 import { useParams } from "react-router";
 import * as db from "../../Database";
+import {Link} from "react-router-dom";
 
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const assignments = db.assignments;
-  
+
   return (
     <div id="wd-assignments-editor">
       {/* input for the assignment name */}
@@ -87,7 +88,7 @@ export default function AssignmentEditor() {
                 <td style={{ border: '1px solid black', padding: '10px' }}>
                   <b>Online entry options</b>
                   <div>
-                    <input type="checkbox" id="wd-text-entry" name="wd-text-entry" value="text entry" />
+                    <input type="checkbox" id="wd-text-entry" name="wd-text-entry" value="text entry" checked/>
                     <label className="padding" htmlFor="wd-text-entry"> Text Entry</label><br />
                   </div>
                   <div>
@@ -120,7 +121,7 @@ export default function AssignmentEditor() {
 
                   Due<br />
                   <div className="input-group">
-                    <input className="padding" defaultValue={assignment.due}/>
+                    <input className="padding" defaultValue={assignment.due} />
                     <span className="input-group-text"><SlCalender /></span>
                   </div>
 
@@ -138,7 +139,7 @@ export default function AssignmentEditor() {
                       <td>
                         Until<br />
                         <div className="input-group">
-                          <input className="padding" value={assignment.due}/>
+                          <input className="padding" value={assignment.due} />
                           <span className="input-group-text"><SlCalender /></span>
                         </div>
                       </td>
@@ -147,11 +148,15 @@ export default function AssignmentEditor() {
                 </td>
               </tr>
             </table>
+            <hr />
+            <Link to={`/Kanbas/Courses/${assignment.course}/Assignments`} className={`list-group-item list-group-item-action text-danger border-0'`}>
+            <button className="bottom-buttons" id="save-bt">Save</button>
+            <button className="bottom-buttons" id="cancel-bt">Cancel</button>
+            </Link>
+            
           </div>
         ))}
-      <hr />
-      <button className="bottom-buttons" id="save-bt">Save</button>
-      <button className="bottom-buttons" id="cancel-bt">Cancel</button>
+
     </div>
   );
 }

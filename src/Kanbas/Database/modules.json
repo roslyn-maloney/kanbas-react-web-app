@@ -77,6 +77,8 @@
         }
       ]
     },
+
+
     {
       "_id": "M201",
       "name": "Fundamentals of Aerodynamics",
@@ -155,6 +157,8 @@
         }
       ]
     },
+
+
     {
       "_id": "M301",
       "name": "Spacecraft Structural Design",
@@ -229,6 +233,208 @@
           "_id": "L903",
           "name": "Spacecraft Testing",
           "description": "Testing and validation of spacecraft systems and components.",
+          "module": "M303"
+        }
+      ]
+    },
+
+
+    {
+      "_id": "M303",
+      "name": "Week 1: Causes and Effects of Corruption",
+      "description": "Overview of events or resons for corruption in the world",
+      "course": "RS104",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Global Anomie, Asymmetries, etc. Slides.pdf",
+          "description": "Slides from Class 1.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Meon, P.G. & Weill, L. (2009). Is corruption an efficient grease? World Development.",
+          "description": "Reading for week1.",
+          "module": "M303"
+        },
+        {
+          "_id": "L903",
+          "name": "treisman and grease the wheels.pdf",
+          "description": "Slides for Class 2.",
+          "module": "M303"
+        }
+      ]
+    },
+    {
+      "_id": "M303",
+      "name": "Week 2: COVID-19 and Corruption - Institutional Corruption",
+      "description": "Overview of the corruption after Covid-19",
+      "course": "RS104",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Session Overview",
+          "description": "Lab on understanding the autonomy.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Readings and Materials for Session 1",
+          "description": "Readings for week 2.",
+          "module": "M303"
+        },
+        {
+          "_id": "L903",
+          "name": "institutional corruption 2024.pdf",
+          "description": "Slides for class 3.",
+          "module": "M303"
+        }
+      ]
+    },
+
+
+    {
+      "_id": "M303",
+      "name": "Reasources",
+      "description": "All the reasource students need for this course",
+      "course": "RS105",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Syllubus",
+          "description": "The syllubus of the this course.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Calender",
+          "description": "Calender that list all important assignments and when they are due.",
+          "module": "M303"
+        },
+        {
+          "_id": "L903",
+          "name": "Office Hours",
+          "description": "Tells students when office hours are being held.",
+          "module": "M303"
+        }
+      ]
+    },
+    {
+      "_id": "M303",
+      "name": "Week 1 - Course Introduction, Syllabus, Agenda, Internet, Web, HTML, Assignment 1",
+      "description": "Week 1 to the course",
+      "course": "RS105",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Introduction to the Course",
+          "description": "Intro to the course.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Slides",
+          "description": "Slides for week 1.",
+          "module": "M303"
+        },
+        {
+          "_id": "L903",
+          "name": "A1",
+          "description": "Assignment 1 for web dev.",
+          "module": "M303"
+        }
+      ]
+    },
+
+    {
+      "_id": "M303",
+      "name": "Upcomming Assignments",
+      "description": "All the reasource students need for this course",
+      "course": "RS106",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Lab 7",
+          "description": "The lab for this week.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Project 1: Shell",
+          "description": "Project 1 for this week.",
+          "module": "M303"
+        },
+        {
+          "_id": "L903",
+          "name": "Quiz 8",
+          "description": "Quiz for next week.",
+          "module": "M303"
+        }
+      ]
+    },
+    {
+      "_id": "M303",
+      "name": "Undated Assignments",
+      "description": "Assinents that don't have a due date",
+      "course": "RS106",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Lab 1",
+          "description": "Into lab into assembly.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Syllubs",
+          "description": "Syllus for this course .",
+          "module": "M303"
+        },
+        {
+          "_id": "L903",
+          "name": "Ferd Notes",
+          "description": "The profoessors notes.",
+          "module": "M303"
+        }
+      ]
+    },
+
+    {
+      "_id": "M303",
+      "name": "Reasources",
+      "description": "All the reasource students need for this course",
+      "course": "RS107",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Syllbus",
+          "description": "The syllubs for this class this semester.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Textbook",
+          "description": "Link to the class textbook.",
+          "module": "M303"
+        }
+      ]
+    },
+    {
+      "_id": "M303",
+      "name": "Week 1",
+      "description": "Assinents that don't have a due date",
+      "course": "RS107",
+      "lessons": [
+        {
+          "_id": "L901",
+          "name": "Classroom Assignments - Week 1",
+          "description": "The classroom assignments for week 1.",
+          "module": "M303"
+        },
+        {
+          "_id": "L902",
+          "name": "Professor Notes",
+          "description": "The professer notes from the class .",
           "module": "M303"
         }
       ]
