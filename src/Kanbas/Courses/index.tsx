@@ -7,30 +7,21 @@ import Assignments from "./Assignments";
 import { FaAlignJustify } from "react-icons/fa6";
 import Editor from "./Assignments/Editor"
 import { useState } from "react";
-import * as db from "../Database";
+import * as db from "../Database"
+
+
 
 export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
-
-  // const [assignments, setAssignments] = useState<any[]>(db.assignments);
-  // const [assignment] = useState<any>({
-  //   _id: "1234", Title: "New Assignment",
-  //   from: "2023-09-10", due: "2023-12-15", description: "New Description",
-  // });
-
-  // const updateAssignment = () => {
-  //   setAssignments(
-  //     courses.map((a) => {
-  //       if (a._id === assignment._id) {
-  //         return assignment;
-  //       } else {
-  //         return a;
-  //       }
-  //     })
-  //   );
-  // };
+  const [assignments, setAssignments] = useState<any[]>(db.assignments);
+  const editAssignment = (assignmentId: string) => {
+    setAssignments(assignments.map((a) => (a._id === assignmentId ? { ...a, editing: true } : a)));
+  }
+  const updateAssignment = (assignment: any) => {
+    setAssignments(assignments.map((a) => (a._id === assignment._id ? assignment : a)));
+  };
 
   return (
     <div id="wd-courses">
@@ -47,7 +38,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
             <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules />} />
             <Route path="Assignments" element={<Assignments />} />
-            <Route path="Assignments/:aid" element={<Editor/>} />
+            <Route path="Assignments/:aid" element={<Editor />} />
             <Route path="People" element={<PeopleTable />} />
             <Route path="People" element={<h2>People</h2>} />
           </Routes>

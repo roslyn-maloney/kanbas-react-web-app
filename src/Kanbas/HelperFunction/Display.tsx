@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { enrollments } from "../Database";
 import { courses } from "../Database";
 import { Link } from "react-router-dom";
+import UnEnroll from "./Unenroll";
 
 export default function Display() {
     const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -18,6 +19,9 @@ export default function Display() {
     return (
         <div id="wd-boolean-state-variables">
             <button className="btn btn-primary" style={{ float: 'right' }} onClick={handleElement}>Enrollment</button>
+            <h2 id="wd-dashboard-published">
+                Published Courses ({enrolledCourses.length})
+            </h2> <hr />
             {!displayed ? (
                 <div>
                     <div className="row row-cols-1 row-cols-md-5 g-4">
@@ -41,7 +45,7 @@ export default function Display() {
                                         </div>
                                     </Link>
                                     {/* // should allow the student to enroll into the course */}
-                                    <button className="btn btn-success float-end" >Enroll</button>
+                                    <button className="btn btn-success float-end" onClick={UnEnroll}>Enroll</button>
                                 </div>
                             </div>
                         ))} </div>
@@ -53,35 +57,35 @@ export default function Display() {
                         .filter((enrolled) => enrolled.user.includes(currentUser._id))
                         .map((enrolled) => (
                             <div className="wd-dashboard-course col" style={{ width: 300 }} key={currentUser._id}>
-                                {courses.filter((course) => course._id ===(enrolled.course))
-                                 .map((course) => 
-                                    <div className="wd-dashboard-course col" style={{ width: 300 }} key={enrolled.course}>
-                                        <div className="card rounded-3 overflow-hidden">
-                                            <Link
-                                                className="wd-dashboard-course-link text-decoration-none text-dark"
-                                                to={`/Kanbas/Courses/${enrolled.course}/Home`}>
-                                                <img src={`${course.image}`} width="100%" height={160} />
-                                                <div className="card-body">
-                                                    <h5 className="wd-dashboard-course-title card-title">
-                                                        {course.name}
-                                                    </h5>
-                                                    <p
-                                                        className="wd-dashboard-course-title card-text overflow-y-hidden"
-                                                        style={{ maxHeight: 100 }}>
-                                                        {course.description}
-                                                    </p>
-                                                    <button className="btn btn-primary">Go</button>
-                                                </div>
-                                            </Link>
-                                            {/* //should all the student to unenroll from the course */}
-                                            <button className="btn btn-danger">Unenroll</button>
+                                {courses.filter((course) => course._id === (enrolled.course))
+                                    .map((course) =>
+                                        <div className="wd-dashboard-course col" style={{ width: 300 }} key={enrolled.course}>
+                                            <div className="card rounded-3 overflow-hidden">
+                                                <Link
+                                                    className="wd-dashboard-course-link text-decoration-none text-dark"
+                                                    to={`/Kanbas/Courses/${enrolled.course}/Home`}>
+                                                    <img src={`${course.image}`} width="100%" height={160} />
+                                                    <div className="card-body">
+                                                        <h5 className="wd-dashboard-course-title card-title">
+                                                            {course.name}
+                                                        </h5>
+                                                        <p
+                                                            className="wd-dashboard-course-title card-text overflow-y-hidden"
+                                                            style={{ maxHeight: 100 }}>
+                                                            {course.description}
+                                                        </p>
+                                                        <button className="btn btn-primary">Go</button>
+                                                    </div>
+                                                </Link>
+                                                {/* //should all the student to unenroll from the course */}
+                                                <button className="btn btn-danger" onClick={UnEnroll}>Unenroll</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
+                                    )}
                             </div>
                         ))
                     }
-                </div>  
+                </div>
             )}
         </div>
     );

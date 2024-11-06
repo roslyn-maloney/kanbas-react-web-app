@@ -3,21 +3,13 @@ import { BsGripVertical } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { CiSearch } from "react-icons/ci";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import * as db from "../../Database";
-import { addAssignment, editAssignment, updateAssignment, deleteAssignment } from "./reducer";
-import { useSelector, useDispatch } from "react-redux";
-import React, { useState } from "react";
 
 
 export default function Assignments() {
   const { cid } = useParams();
   const assignments = db.assignments;
-  const navigate = useNavigate();
-
-  // const addAssignment = () => {
-  //   navigate(`/Kanbas/Courses/${cid}/Assignments/New`); // this editor -> empty
-  // }
 
   return (
     //search bar
