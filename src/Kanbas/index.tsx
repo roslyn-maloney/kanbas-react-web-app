@@ -14,6 +14,7 @@ export default function Kanbas() {
     _id: "1234", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
+  const currentUser = useState<any[]>(db.users);
   const addNewCourse = () => {
     setCourses([...courses, { ...course, _id: new Date().getTime().toString() }]);
   };
@@ -43,6 +44,7 @@ export default function Kanbas() {
             <ProtectedRoute><Dashboard
               courses={courses}
               course={course}
+              currentUser={currentUser}
               setCourse={setCourse}
               addNewCourse={addNewCourse}
               deleteCourse={deleteCourse}

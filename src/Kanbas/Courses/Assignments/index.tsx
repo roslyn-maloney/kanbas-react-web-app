@@ -3,19 +3,22 @@ import { BsGripVertical } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { CiSearch } from "react-icons/ci";
-
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as db from "../../Database";
+import { addAssignment, editAssignment, updateAssignment, deleteAssignment } from "./reducer";
+import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
 
 
 export default function Assignments() {
   const { cid } = useParams();
   const assignments = db.assignments;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-
-  const links = [
-    { path: `/Kanbas/Courses/${cid}/Assignments/${cid}` },
-  ];
+  const addAssignment = () => {
+    navigate(`/Kanbas/Courses/${cid}/Assignments/New`); // this editor -> empty
+  }
 
   return (
     //search bar
@@ -26,10 +29,12 @@ export default function Assignments() {
           placeholder="Search for Assignments"
           style={{ borderRadius: '10px' }} />
       </div>
-      {/* Assignments button */}
-      <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end">
+      {/* Add Assignments button -> should take you to the editor page */}
+
+      <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={addAssignment}>
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Assignments </button>
+
       {/* group button */}
       <button id="wd-add-module-btn" className="btn btn-lg btn-secondary me-1 float-end">
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
@@ -52,7 +57,7 @@ export default function Assignments() {
                 .filter((assignment: any) => assignment.course === cid)
                 .map((assignment: any) => (
                   <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /> <PiNotebookThin className="me-2 fs-3" />
-                     <Link
+                    <Link
                       to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                     >
                       {assignment.title}

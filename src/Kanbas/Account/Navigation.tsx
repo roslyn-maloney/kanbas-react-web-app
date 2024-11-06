@@ -26,10 +26,3 @@ export default function AccountNavigation() {
     </div>
   );
 }
-
-// <Link to="/Kanbas/Account" className={`list-group-item text-center border-0 bg-black
-//${pathname.includes("Account") ? "bg-white text-danger" : "bg-black text-white"}`}>
-//<FaRegCircleUser className={`fs-1 ${pathname.includes("Account") ? "text-danger" : "text-white"}`} />
-//<br />
-//Account
-//</Link>

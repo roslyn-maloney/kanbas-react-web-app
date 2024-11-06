@@ -4,7 +4,9 @@ import GreenCheckmark from "./GreenCheckmark";
 import BackgroundColors from "../../../Labs/Lab2/BackgroundColors";
 
 export default function ModulesControls({ moduleName, setModuleName, addModule }:
-    { moduleName: string; setModuleName: (title: string) => void; addModule: () => void; }) {
+    { moduleName: string; 
+        setModuleName: (title: string) => void;
+        addModule: () => void; }) {
     return (
         <div id="wd-modules-controls" className="text-nowrap">
             <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end"

@@ -4,6 +4,7 @@ import * as db from "./Database";
 export default function Dashboard({
   courses,
   course,
+  currentUser,
   setCourse,
   addNewCourse,
   deleteCourse,
@@ -11,6 +12,7 @@ export default function Dashboard({
 }: {
   courses: any[];
   course: any;
+  currentUser: any; //ts need a type for anything -> make at type -> basically saying of any type 
   setCourse: (course: any) => void;
   addNewCourse: () => void;
   deleteCourse: (course: any) => void;
@@ -19,6 +21,7 @@ export default function Dashboard({
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
+      {currentUser.role == "FACULTY" && <div>
       <h5>
         New Course
         <button className="btn btn-primary float-end" onClick={addNewCourse}>
@@ -43,6 +46,7 @@ export default function Dashboard({
           }
         />
       </h5>
+      </div>}
       <hr />
       <h2 id="wd-dashboard-published">
         Published Courses ({courses.length})
@@ -56,9 +60,8 @@ export default function Dashboard({
                 <Link
                   className="wd-dashboard-course-link
                            text-decoration-none text-dark"
-                  to={`/Kanbas/Courses/${course._id}/Home`}
-                >
-                  <img src="/images/reactjs.jpg" width="100%" height={160} />
+                  to={`/Kanbas/Courses/${course._id}/Home`}>
+                  <img src={`${course.image}`} width="100%" height={160} /> 
                   <div className="card-body">
                     <h5 className="wd-dashboard-course-title card-title">
                       {course.name}
@@ -97,7 +100,8 @@ export default function Dashboard({
           ))}
         </div>
       </div>
-      {/* <pre>{JSON.stringify(courses, null, 3)}</pre> */}
     </div>
   );
 }
+
+// pass in a defualt inmage in the adding function 
