@@ -15,8 +15,8 @@ const assignmentsSlice = createSlice({
         points: assignment.points,
         from: assignment.from,
         due: assignment.due,
+        descrition: assignment.descrition,
       };
-      console.log(state.assignments);
       state.assignments = [...state.assignments, newAssignment] as any;
     },
     deleteAssignment: (state, { payload: assignmentId }) => {
@@ -39,4 +39,4 @@ export const { addAssignment, deleteAssignment, updateAssignment, editAssignment
   assignmentsSlice.actions;
 
 export default assignmentsSlice.reducer;
-// something 
+// something wrong here 

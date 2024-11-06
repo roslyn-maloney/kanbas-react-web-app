@@ -9,39 +9,39 @@ import { addAssignment } from "./reducer";
 
 export default function AssignmentEditor(){
   const { cid, aid } = useParams();
-  console.log("hello")
   const assignments = useSelector(
-    (state: any) => state.assignmentsReducer.assignments
+    (state: any) => state.assignmentReducer.assignments
   ); 
-  console.log(assignments);
-  
   const dispatch = useDispatch();
   const assignment = assignments.filter((assignment: any) => assignment._id == aid && assignment.course == cid); // filtering out the asingment with particular course id and assignment id
+  console.log(assignment)
+  console.log(aid);
   const [selectedAssignment, setSelectedAssignment] = useState({
-    title: '',
-    description: '',
-    points: 0,
-    due: "",
-    from: "",
+    title: assignment.title,
+    description: assignment.description,
+    points: assignment.points,
+    due: assignment.due,
+    from: assignment.from,
   });
+  console.log(selectedAssignment)
   if (aid == "New") {
     setSelectedAssignment({
       title: "",
       description: "",
       points: 0,
-      due: "mm/dd/yy",
-      from: "mm/dd/yy",
+      due: "",
+      from: "",
     });
   } 
-  if (aid == assignment._id){
-    setSelectedAssignment({
-      title: assignment.title,
-      description: assignment.description,
-      points: assignment.points,
-      due: assignment.due,
-      from: assignment.from,
-    });
-  }
+  // if (aid == assignment._id){
+  //   setSelectedAssignment({
+  //     title: assignment.title,
+  //     description: assignment.description,
+  //     points: assignment.points,
+  //     due: assignment.due,
+  //     from: assignment.from,
+  //   });
+  // }
 
   const updateAssignment = () => {
     dispatch(addAssignment(selectedAssignment)); // Dispatch to Redux to save the new assignment
@@ -54,7 +54,7 @@ export default function AssignmentEditor(){
         <label htmlFor="input1" className="form-label">
           Assignment Name</label>
         <input type="text" className="padding"
-          id="wd-name" defaultValue={selectedAssignment.title}
+          id="wd-name" value={selectedAssignment.title}
           onChange={(e) => setSelectedAssignment({ ...selectedAssignment, title: e.target.value })}
           placeholder="Assignment Name" />
         <br /><br />

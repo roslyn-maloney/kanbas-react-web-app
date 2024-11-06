@@ -10,6 +10,11 @@ export default function Display() {
     const handleElement = () => {
         setdisplay(!displayed);
     }
+    // Filter enrollments by the current user's ID ->
+    const enrolledCourses = enrollments.filter((enrollment) =>
+        enrollment.user.includes(currentUser._id) // Check if currentUser._id is in the enrollment's user array
+    );
+
     return (
         <div id="wd-boolean-state-variables">
             <button className="btn btn-primary" style={{ float: 'right' }} onClick={handleElement}>Enrollment</button>
@@ -35,17 +40,21 @@ export default function Display() {
                                             <button className="btn btn-primary">Go</button>
                                         </div>
                                     </Link>
+                                    {/* // should allow the student to enroll into the course */}
+                                    <button className="btn btn-success float-end" >Enroll</button>
                                 </div>
                             </div>
                         ))} </div>
                 </div>
             ) : (
-                <div>
+
+                <div className="row row-cols-1 row-cols-md-5 g-4">
                     {enrollments
                         .filter((enrolled) => enrolled.user.includes(currentUser._id))
                         .map((enrolled) => (
-                            <div key={currentUser._id}>
-                                {courses.map((course) => (
+                            <div className="wd-dashboard-course col" style={{ width: 300 }} key={currentUser._id}>
+                                {courses.filter((course) => course._id ===(enrolled.course))
+                                 .map((course) => 
                                     <div className="wd-dashboard-course col" style={{ width: 300 }} key={enrolled.course}>
                                         <div className="card rounded-3 overflow-hidden">
                                             <Link
@@ -64,13 +73,15 @@ export default function Display() {
                                                     <button className="btn btn-primary">Go</button>
                                                 </div>
                                             </Link>
+                                            {/* //should all the student to unenroll from the course */}
+                                            <button className="btn btn-danger">Unenroll</button>
                                         </div>
-                                    </div>))}
+                                    </div>
+                                )}
                             </div>
                         ))
                     }
-                </div>
-
+                </div>  
             )}
         </div>
     );

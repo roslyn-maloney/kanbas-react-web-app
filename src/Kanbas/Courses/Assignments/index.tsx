@@ -15,11 +15,9 @@ export default function Assignments() {
   const assignments = db.assignments;
   const navigate = useNavigate();
 
-  const addAssignment = () => {
-    navigate(`/Kanbas/Courses/${cid}/Assignments/New`); // this editor -> empty
-  }
-
-
+  // const addAssignment = () => {
+  //   navigate(`/Kanbas/Courses/${cid}/Assignments/New`); // this editor -> empty
+  // }
 
   return (
     //search bar
@@ -31,10 +29,12 @@ export default function Assignments() {
           style={{ borderRadius: '10px' }} />
       </div>
       
-        <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={addAssignment}>
+      <Link to={`/Kanbas/Courses/${cid}/Assignments/New`}>
+        <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end">
           <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
           Assignments
        </button> 
+      </Link>
 
       {/* group button */}
       <button id="wd-add-module-btn" className="btn btn-lg btn-secondary me-1 float-end">
