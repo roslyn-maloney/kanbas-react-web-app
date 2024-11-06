@@ -7,6 +7,7 @@ import Courses from "./Courses";
 import * as db from "./Database";
 import { useState } from "react";
 import ProtectedRoute from "./Account/ProtectedRoute";
+import { useSelector } from "react-redux";
 
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>(db.courses);
@@ -14,7 +15,8 @@ export default function Kanbas() {
     _id: "1234", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
-  const currentUser = useState<any[]>(db.users);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+
   const addNewCourse = () => {
     setCourses([...courses, { ...course, _id: new Date().getTime().toString() }]);
   };
@@ -32,6 +34,8 @@ export default function Kanbas() {
       })
     );
   };
+
+  
 
   return (
     <div id="wd-kanbas">
@@ -58,12 +62,4 @@ export default function Kanbas() {
     </div>
   );
 }
-
-// 3.4.4 - On your own, use the the current user's role to only allow FACULTY 
-//to edit any content such as courses, modules, 
-//and assignments. If a user does not have the 
-//FACULTY role, hide all forms and buttons that would
-//allow editing any content, 
-//e.g., New Course form, Add, Delete, Edit and Update
-//buttons for Courses, Modules, and Assignments, etc.
 

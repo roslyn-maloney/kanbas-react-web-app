@@ -2,21 +2,25 @@ import { SlCalender } from "react-icons/sl";
 import { useParams } from "react-router";
 import * as db from "../../Database";
 import { Link } from "react-router-dom";
-import { updateAssignment } from "./reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { addAssignment } from "./reducer";
 
 
-
-export default function AssignmentEditor() {
+export default function AssignmentEditor(){
   const { cid, aid } = useParams();
-  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+  console.log("hello")
+  const assignments = useSelector(
+    (state: any) => state.assignmentsReducer.assignments
+  ); 
+  console.log(assignments);
+  
   const dispatch = useDispatch();
-  const assignment = assignments.filter((assignment: any) => assignment._id == aid && assignment.course === cid) // filtering out the asingment with particular course id and assignment id
+  const assignment = assignments.filter((assignment: any) => assignment._id == aid && assignment.course == cid); // filtering out the asingment with particular course id and assignment id
   const [selectedAssignment, setSelectedAssignment] = useState({
     title: '',
     description: '',
-    points: '',
+    points: 0,
     due: "",
     from: "",
   });
@@ -24,11 +28,12 @@ export default function AssignmentEditor() {
     setSelectedAssignment({
       title: "",
       description: "",
-      points: "",
+      points: 0,
       due: "mm/dd/yy",
       from: "mm/dd/yy",
     });
-  } else {
+  } 
+  if (aid == assignment._id){
     setSelectedAssignment({
       title: assignment.title,
       description: assignment.description,
@@ -37,6 +42,10 @@ export default function AssignmentEditor() {
       from: assignment.from,
     });
   }
+
+  const updateAssignment = () => {
+    dispatch(addAssignment(selectedAssignment)); // Dispatch to Redux to save the new assignment
+  };
 
   return (
     <div id="wd-assignments-editor">
@@ -62,7 +71,7 @@ export default function AssignmentEditor() {
             </td>
             <td>
               <input className="padding" id="wd-points" defaultValue={selectedAssignment.points}
-                onChange={(e) => setSelectedAssignment({ ...selectedAssignment, points: e.target.value })} />
+                onChange={(e) => setSelectedAssignment({ ...selectedAssignment, points: Number(e.target.value) })} />
             </td>
           </tr><br />
           <tr>

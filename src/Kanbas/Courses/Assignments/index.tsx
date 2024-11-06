@@ -13,12 +13,13 @@ import React, { useState } from "react";
 export default function Assignments() {
   const { cid } = useParams();
   const assignments = db.assignments;
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const addAssignment = () => {
     navigate(`/Kanbas/Courses/${cid}/Assignments/New`); // this editor -> empty
   }
+
+
 
   return (
     //search bar
@@ -29,11 +30,11 @@ export default function Assignments() {
           placeholder="Search for Assignments"
           style={{ borderRadius: '10px' }} />
       </div>
-      {/* Add Assignments button -> should take you to the editor page */}
-
-      <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={addAssignment}>
-        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-        Assignments </button>
+      
+        <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={addAssignment}>
+          <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+          Assignments
+       </button> 
 
       {/* group button */}
       <button id="wd-add-module-btn" className="btn btn-lg btn-secondary me-1 float-end">
