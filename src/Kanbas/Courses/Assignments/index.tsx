@@ -5,13 +5,8 @@ import LessonControlButtons from "./AssignmentLessonControls";
 import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import * as db from "../../Database";
 
 import { deleteAssignment } from "./reducer";
-
-
-
 
 
 export default function Assignments() {
