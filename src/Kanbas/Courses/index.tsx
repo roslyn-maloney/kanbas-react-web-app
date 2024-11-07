@@ -16,12 +16,6 @@ export default function Courses({ courses }: { courses: any[]; }) {
   const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
   const [assignments, setAssignments] = useState<any[]>(db.assignments);
-  const editAssignment = (assignmentId: string) => {
-    setAssignments(assignments.map((a) => (a._id === assignmentId ? { ...a, editing: true } : a)));
-  }
-  const updateAssignment = (assignment: any) => {
-    setAssignments(assignments.map((a) => (a._id === assignment._id ? assignment : a)));
-  };
 
   return (
     <div id="wd-courses">

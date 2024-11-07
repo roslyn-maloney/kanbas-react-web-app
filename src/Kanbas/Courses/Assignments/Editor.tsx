@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addAssignment, updateAssignment } from "./reducer";
+import { addAssignment, updateAssignment, editAssignment, deleteAssignment} from "./reducer";
 import { useEffect } from "react";
 
 
@@ -14,55 +14,56 @@ export default function AssignmentEditor() {
     (state: any) => state.assignmentReducer.assignments
   );
   const dispatch = useDispatch();
-  const [selectedAssignment, setSelectedAssignment] = useState({
+
+  const assignment = assignments.find((assignment: any) => assignment._id == aid) || {
     title: "",
     description: "",
     points: 0,
     due: "",
     from: "",
-    course: cid
-  });
-
+    course: cid,
+    _id: new Date().getTime().toString(),
+  }
+  const [selectedAssignment, setSelectedAssignment] = useState(assignment);
 
   const navigate = useNavigate();
+  const isEdit = assignments.findIndex((a : any) => a._id === aid) !== -1;
 
-  useEffect(() => {
-    if (aid !== "New") {
-      const assignment = assignments.find((assignment: any) => assignment._id == aid && assignment.course == cid); // filtering out the asingment with particular course id and assignment id
-      setSelectedAssignment({
-        title: assignment.title,
-        description: assignment.description,
-        points: assignment.points,
-        due: assignment.due,
-        from: assignment.from,
-        course: cid || ""
-      });
-    }
-  }, []);
-
-  const updateAssignment = () => {
-    setSelectedAssignment(
-      assignments.map((a: { _id: any; }) => {
-        if (a._id === assignments._id) {
-          return assignments;
-        } else {
-          return a;
-        }
-      })
-    );
-  };
-
-  // a function that decideds when to update or add an assingment
-  const updateOrAdd = () => {
-    if (aid != "New") { //if not new then update 
-      updateAssignment(); // Dispatch to Redux to save the new assignment
-    }
-    if (aid == "New") { //if new then add assignment
-      //addAssignment(assignmentId);
-      <h1>jngnrjgnrek</h1>
-    }
+  // everytime using async pair up with await
+  const handleSave = async () => {
+    if(isEdit) {
+      await dispatch(updateAssignment(selectedAssignment))
+    } else {
+      await dispatch(addAssignment(selectedAssignment));
+    } 
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
-  }
+  } 
+  // useEffect(() => {
+  //   if (aid !== "New") {
+  //     const assignment = assignments.find((assignment: any) => assignment._id == aid && assignment.course == cid); // filtering out the asingment with particular course id and assignment id
+  //     setSelectedAssignment({
+  //       title: assignment.title,
+  //       description: assignment.description,
+  //       points: assignment.points,
+  //       due: assignment.due,
+  //       from: assignment.from,
+  //       course: cid || ""
+  //     });
+  //   }
+  // }, []);
+
+  // // a function that decideds when to update or add an assingment
+  // const updateOrAdd = () => {
+  //   if (aid != "New") { //if not new then update 
+  //     dispatch(updateAssignment({ name: selectedAssignment, course: cid })); // Dispatch to Redux to save the new assignment
+  //   }
+  //   if (aid == "New") { //if new then add assignment
+  //     dispatch(addAssignment({ name: selectedAssignment, course: cid }));
+  //   }
+  //   navigate(`/Kanbas/Courses/${cid}/Assignments`);
+  // }
+
+  
 
 return (
   <div id="wd-assignments-editor">
@@ -73,7 +74,7 @@ return (
       <input type="text" className="padding"
         id="wd-name" value={selectedAssignment.title}
         onChange={(e) => setSelectedAssignment({ ...selectedAssignment, title: e.target.value })}
-        placeholder="Assignment Name" />
+      />
       <br /><br />
       <textarea id="wd-description" rows={3}
         defaultValue={selectedAssignment.description}
@@ -128,7 +129,7 @@ return (
       <hr />
       {/* // must update a existing one or add a new one */}
       {/* when button is clicked update the assignment */}
-      <button className="bottom-buttons" id="save-bt" onClick={updateOrAdd}>Save</button>
+      <button className="bottom-buttons" id="save-bt" onClick={handleSave}>Save</button>
       <Link to={`/Kanbas/Courses/${selectedAssignment.course}/Assignments`} className={`list-group-item list-group-item-action text-danger border-0'`}>
         <button className="bottom-buttons" id="cancel-bt">Cancel</button>
       </Link>

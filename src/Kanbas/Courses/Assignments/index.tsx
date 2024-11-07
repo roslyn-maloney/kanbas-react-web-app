@@ -3,13 +3,20 @@ import { BsGripVertical } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { CiSearch } from "react-icons/ci";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as db from "../../Database";
+import { useSelector } from "react-redux";
 
 
 export default function Assignments() {
   const { cid } = useParams();
-  const assignments = db.assignments;
+  const navigate = useNavigate();
+  const assignments = useSelector(
+    (state: any) => state.assignmentReducer
+  ).assignments.filter((assignment: any) => assignment.course === cid);
+  const handleAddAssignment = () => {
+    navigate(`/Kanbas/Courses/${cid}/Assignments/${new Date().getTime().toString()}`);
+  };
 
   return (
     //search bar
@@ -20,13 +27,13 @@ export default function Assignments() {
           placeholder="Search for Assignments"
           style={{ borderRadius: '10px' }} />
       </div>
-      
-      <Link to={`/Kanbas/Courses/${cid}/Assignments/New`}>
-        <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end">
-          <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-          Assignments
-       </button> 
-      </Link>
+
+
+      <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={handleAddAssignment}>
+        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+        Assignments
+      </button>
+
 
       {/* group button */}
       <button id="wd-add-module-btn" className="btn btn-lg btn-secondary me-1 float-end">
