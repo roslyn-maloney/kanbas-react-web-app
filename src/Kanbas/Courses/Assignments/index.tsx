@@ -1,11 +1,17 @@
 import { PiNotebookThin } from "react-icons/pi";
 import { BsGripVertical } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
-import LessonControlButtons from "../Modules/LessonControlButtons";
+import LessonControlButtons from "./AssignmentLessonControls";
 import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import * as db from "../../Database";
-import { useSelector } from "react-redux";
+
+import { deleteAssignment } from "./reducer";
+
+
+
 
 
 export default function Assignments() {
@@ -14,9 +20,17 @@ export default function Assignments() {
   const assignments = useSelector(
     (state: any) => state.assignmentReducer
   ).assignments.filter((assignment: any) => assignment.course === cid);
+
   const handleAddAssignment = () => {
     navigate(`/Kanbas/Courses/${cid}/Assignments/${new Date().getTime().toString()}`);
   };
+
+  // const [setAssignment] = useState<any>(db.modules);
+  // const deleteAssignment = (assignmentId: string) => {
+  //   setAssignment(assignments.filter((a: { _id: string; }) => a._id !== assignmentId));
+  // };
+
+  const dispatch = useDispatch();
 
   return (
     //search bar
@@ -56,15 +70,17 @@ export default function Assignments() {
               {assignments
                 .filter((assignment: any) => assignment.course === cid)
                 .map((assignment: any) => (
-                  <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /> <PiNotebookThin className="me-2 fs-3" />
+                  <li className="wd-lesson list-group-item p-3 ps-1"> <BsGripVertical className="me-2 fs-3" /><PiNotebookThin className="me-2 fs-3" />
                     <Link
                       to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                     >
                       {assignment.title}
                     </Link>
-                    <br /> <LessonControlButtons />
+                    <br /> <LessonControlButtons assignmentId={assignment._id}
+                  deleteAssignment={(assignmentId) => {
+                    dispatch(deleteAssignment(assignmentId))}}/> 
                     <p>
-                      <span className="red-text">Multiple Modules</span> |
+                      <span className="red-text">Multiple Modules</span> 
                       <b> Not available until</b> {assignment.from} at 12:00am |<br />
                       <b>Due</b> {assignment.due} | {assignment.points}pts
                     </p>

@@ -3,9 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addAssignment, updateAssignment, editAssignment, deleteAssignment} from "./reducer";
-import { useEffect } from "react";
-
+import { addAssignment, updateAssignment} from "./reducer";
 
 
 export default function AssignmentEditor() {
@@ -37,32 +35,7 @@ export default function AssignmentEditor() {
       await dispatch(addAssignment(selectedAssignment));
     } 
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
-  } 
-  // useEffect(() => {
-  //   if (aid !== "New") {
-  //     const assignment = assignments.find((assignment: any) => assignment._id == aid && assignment.course == cid); // filtering out the asingment with particular course id and assignment id
-  //     setSelectedAssignment({
-  //       title: assignment.title,
-  //       description: assignment.description,
-  //       points: assignment.points,
-  //       due: assignment.due,
-  //       from: assignment.from,
-  //       course: cid || ""
-  //     });
-  //   }
-  // }, []);
-
-  // // a function that decideds when to update or add an assingment
-  // const updateOrAdd = () => {
-  //   if (aid != "New") { //if not new then update 
-  //     dispatch(updateAssignment({ name: selectedAssignment, course: cid })); // Dispatch to Redux to save the new assignment
-  //   }
-  //   if (aid == "New") { //if new then add assignment
-  //     dispatch(addAssignment({ name: selectedAssignment, course: cid }));
-  //   }
-  //   navigate(`/Kanbas/Courses/${cid}/Assignments`);
-  // }
-
+  }
   
 
 return (
