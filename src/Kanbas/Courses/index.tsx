@@ -5,18 +5,14 @@ import PeopleTable from "./People/Table";
 import CoursesNavigation from "./Navigation";
 import Assignments from "./Assignments";
 import { FaAlignJustify } from "react-icons/fa6";
-import Editor from "./Assignments/Editor"
-import { useState } from "react";
-import * as db from "../Database"
-
-
+import Editor from "./Assignments/Editor";
+import { useSelector } from "react-redux";
 
 export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
-  const [assignments, setAssignments] = useState<any[]>(db.assignments);
-
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
@@ -30,8 +26,8 @@ export default function Courses({ courses }: { courses: any[]; }) {
           <Routes>
             <Route path="/" element={<Navigate to="Home" />} />
             <Route path="Home" element={<Home />} />
-            <Route path="Modules" element={<Modules />} />
-            <Route path="Assignments" element={<Assignments />} />
+            <Route path="Modules" element={<Modules currentUser={currentUser}/>} />
+            <Route path="Assignments" element={<Assignments currentUser={currentUser}/>} />
             <Route path="Assignments/:aid" element={<Editor />} />
             <Route path="People" element={<PeopleTable />} />
             <Route path="People" element={<h2>People</h2>} />

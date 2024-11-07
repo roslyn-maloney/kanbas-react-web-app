@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { enrollments } from "../Database";
 import { courses } from "../Database";
 import { Link } from "react-router-dom";
-import UnEnroll from "./Unenroll";
 
 export default function Display() {
     const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -55,7 +54,7 @@ export default function Display() {
                                                                 <button className="btn btn-primary"> Go </button> </div>
                                                         </Link>
                                                         {/* Button for Enroll */}
-                                                        <button className="btn btn-success" onClick={UnEnroll}>Enroll</button>
+                                                        <button className="btn btn-success">Enroll</button>
                                                     </div>
                                                 </div>
                                             ))}
@@ -95,7 +94,7 @@ export default function Display() {
                                                         </div>
                                                     </Link>
                                                     {/* Button for Unenroll */}
-                                                    <button className="btn btn-danger" onClick={UnEnroll}>Unenroll</button>
+                                                    <button className="btn btn-danger">Unenroll</button>
                                                 </div>
                                             </div>
                                         ))}
