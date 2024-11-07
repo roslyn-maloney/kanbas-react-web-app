@@ -20,11 +20,6 @@ export default function Assignments() {
     navigate(`/Kanbas/Courses/${cid}/Assignments/${new Date().getTime().toString()}`);
   };
 
-  // const [setAssignment] = useState<any>(db.modules);
-  // const deleteAssignment = (assignmentId: string) => {
-  //   setAssignment(assignments.filter((a: { _id: string; }) => a._id !== assignmentId));
-  // };
-
   const dispatch = useDispatch();
 
   return (
