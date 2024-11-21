@@ -18,7 +18,12 @@ export default function Dashboard({
   addNewCourse: () => void;
   deleteCourse: (course: any) => void;
   updateCourse: () => void;
-}) {
+}) 
+{
+  const [displayed, setdisplay] = useState(true);
+    const handleElement = () => {
+        setdisplay(!displayed);
+    }
   return (
     <div id="wd-dashboard">
       {currentUser.role == "FACULTY" && (

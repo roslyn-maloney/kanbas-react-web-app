@@ -40,6 +40,3 @@ export default function KanbasNavigation() {
     </div>
   );
 }
-
-
-// implement the changing of the active link
