@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import * as assignmentClient from "./client";
+import * as coursesClient from "../client";
 import { addAssignment, updateAssignment} from "./reducer";
 
 
@@ -12,6 +14,7 @@ export default function AssignmentEditor() {
     (state: any) => state.assignmentReducer.assignments
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const assignment = assignments.find((assignment: any) => assignment._id == aid) || {
     title: "",
@@ -23,16 +26,14 @@ export default function AssignmentEditor() {
     _id: new Date().getTime().toString(),
   }
   const [selectedAssignment, setSelectedAssignment] = useState(assignment);
-
-  const navigate = useNavigate();
   const isEdit = assignments.findIndex((a : any) => a._id === aid) !== -1;
 
   // everytime using async pair up with await
   const handleSave = async () => {
     if(isEdit) {
-      await dispatch(updateAssignment(selectedAssignment))
+      await assignmentClient.updateAssignment(selectedAssignment); // update existing assignment 
     } else {
-      await dispatch(addAssignment(selectedAssignment));
+      await coursesClient.createAssignment(cid || "", selectedAssignment); // create a new assignment
     } 
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
   }

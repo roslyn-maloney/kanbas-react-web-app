@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-//import Display from "./HelperFunction/Display";
+import Display from "./HelperFunction/Display";
 import { useSelector } from "react-redux";
+import { current } from "@reduxjs/toolkit";
 
 export default function Dashboard({
   courses,
@@ -18,11 +19,11 @@ export default function Dashboard({
   updateCourse: () => void;
 }) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  console.log(courses);
 
   return (
     <div id="wd-dashboard">
       <div>
+        {/* Check if the current user is a Faculty */}
         {currentUser.role === "FACULTY" && (
           <div>
             <hr />
@@ -56,73 +57,74 @@ export default function Dashboard({
               />
             </h5>
             <hr />
-          </div>
-        )}
 
-        {/* Displaying the courses */}
-        <div>
-          <h2 id="wd-dashboard-published">
-            Published Courses ({courses.length})
-          </h2>
-          <hr />
-          <div id="wd-dashboard-courses" className="row">
-            <div className="row row-cols-1 row-cols-md-5 g-4">
-              {courses.map((course) => (
-                <div
-                  className="wd-dashboard-course col"
-                  style={{ width: 300 }}
-                  key={course._id}
-                >
-                  <div className="card rounded-3 overflow-hidden">
-                    <Link
-                      className="wd-dashboard-course-link text-decoration-none text-dark"
-                      to={`/Kanbas/Courses/${course._id}/Home`}
+
+            {/* Display Published Courses */}
+            <div>
+              <h2 id="wd-dashboard-published">
+                Published Courses ({courses.length})
+              </h2>
+              <hr />
+              <div id="wd-dashboard-courses" className="row">
+                <div className="row row-cols-1 row-cols-md-5 g-4">
+                  {courses.map((course) => (
+                    <div
+                      className="wd-dashboard-course col"
+                      style={{ width: 300 }}
+                      key={course._id}
                     >
-                      <img src={course.image} width="100%" height={160} />
-                      <div className="card-body">
-                        <h5 className="wd-dashboard-course-title card-title">
-                          {course.name}
-                        </h5>
-                        <p
-                          className="wd-dashboard-course-title card-text overflow-y-hidden"
-                          style={{ maxHeight: 100 }}
+                      <div className="card rounded-3 overflow-hidden">
+                        <Link
+                          className="wd-dashboard-course-link text-decoration-none text-dark"
+                          to={`/Kanbas/Courses/${course._id}/Home`}
                         >
-                          {course.description}
-                        </p>
-                        <button className="btn btn-primary"> Go </button>
+                          <img src={course.image} width="100%" height={160} />
+                          <div className="card-body">
+                            <h5 className="wd-dashboard-course-title card-title">
+                              {course.name}
+                            </h5>
+                            <p
+                              className="wd-dashboard-course-title card-text overflow-y-hidden"
+                              style={{ maxHeight: 100 }}
+                            >
+                              {course.description}
+                            </p>
+                            <button className="btn btn-primary"> Go </button>
+                            <button
+                              onClick={(event) => {
+                                event.preventDefault();
+                                deleteCourse(course._id);
+                              }}
+                              className="btn btn-danger float-end"
+                            >
+                              Delete
+                            </button>
+                            <button
+                              id="wd-edit-course-click"
+                              onClick={(event) => {
+                                event.preventDefault();
+                                setCourse(course);
+                              }}
+                              className="btn btn-warning me-2 float-end"
+                            >
+                              Edit
+                            </button>
+                          </div>
+                        </Link>
+                        {/* Display delete and edit buttons only for Faculty */}
                       </div>
-                    </Link>
-                  </div>
-
-                  {/* Buttons for delete and edit for Faculty */}
-                  {currentUser.role === "FACULTY" && (
-                    <div>
-                      <button
-                        onClick={(event) => {
-                          event.preventDefault();
-                          deleteCourse(course._id);
-                        }}
-                        className="btn btn-danger float-end"
-                      >
-                        Delete
-                      </button>
-                      <button
-                        id="wd-edit-course-click"
-                        onClick={(event) => {
-                          event.preventDefault();
-                          setCourse(course);
-                        }}
-                        className="btn btn-warning me-2 float-end"
-                      >
-                        Edit
-                      </button>
                     </div>
-                  )}
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
+        {currentUser.role==="STUDENT" && (
+          <div>
+            <Display/>
+          </div>
+        )}
       </div>
     </div>
   );

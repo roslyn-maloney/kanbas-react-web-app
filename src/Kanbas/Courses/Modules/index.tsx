@@ -8,12 +8,18 @@ import * as coursesClient from "../client";
 import { setModules, addModule, editModule, updateModule, deleteModule } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import * as modulesClient from "./client";
+import { BiCurrentLocation } from "react-icons/bi";
 
 export default function Modules({ currentUser, }: { currentUser: any; }) {
   const { cid } = useParams();
   const [moduleName, setModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
+
+  const saveModule = async (module: any) => {
+    await modulesClient.updateModule(module);
+    dispatch(updateModule(module));
+  };
 
   const removeModule = async (moduleId: string) => {
     await modulesClient.deleteModule(moduleId);
@@ -57,7 +63,7 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
                       onChange={(e) => dispatch(updateModule({ ...module, name: e.target.value }))}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          dispatch(updateModule({ ...module, editing: false }));
+                          saveModule({ ...module, editing: false });
                         }
                       }}
                       defaultValue={module.name} />
@@ -66,7 +72,13 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
                   <ModuleControlButtons moduleId={module._id}
                     deleteModule={(moduleId) => removeModule(moduleId)}
                     editModule={(moduleId) => dispatch(editModule(moduleId))} />
-                </div></div>)}
+                </div></div>
+              )}
+              {currentUser.role == "STUDENT" && (<div>
+                <div className="wd-title p-3 ps-2 bg-secondary">
+                  {module.name}
+                </div>
+              </div>)}
               {module.lessons && (
                 <ul className="wd-lessons list-group rounded-0">
                   {module.lessons.map((lesson: any) => (

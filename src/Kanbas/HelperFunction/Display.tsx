@@ -19,7 +19,6 @@ export default function Display() {
                         Published Courses ({courses.length})
                     </h2>
                     <hr />
-                    <div id="wd-dashboard-courses" className="row">
                         <div className="row row-cols-1 row-cols-md-5 g-4">
                             {courses
                                 .map((course) => (
@@ -47,13 +46,12 @@ export default function Display() {
                                         </div>
                                     </div>
                                 ))}
-                        </div> </div>
-
+                    </div>
                 </div>
             ) : (
                 <div>
                     <h2 id="wd-dashboard-published">
-                        Published Courses ()
+                        Published Courses ({courses.length})
                     </h2>
                     <hr />
                     <div className="row row-cols-1 row-cols-md-5 g-4">

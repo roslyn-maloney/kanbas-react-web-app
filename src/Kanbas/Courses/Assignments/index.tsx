@@ -6,7 +6,10 @@ import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deleteAssignment } from "./reducer";
+import { setAssignment, deleteAssignment } from "./reducer";
+import * as coursesClient from "../client";
+import * as assignmentsClient from "./client";
+import { useEffect } from "react";
 
 
 export default function Assignments(
@@ -23,6 +26,22 @@ export default function Assignments(
   };
 
   const dispatch = useDispatch();
+
+  const removeAssignment = async (assignmentId: string) => {
+    await assignmentsClient.deleteAssignment(assignmentId);
+    dispatch(deleteAssignment(assignmentId));
+  };
+
+
+  const fetchAssignments = async () => {
+    const assignments = await coursesClient.findAssignmentForCourse(cid as string);
+    dispatch(setAssignment(assignments));
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
+
+
 
   return (
     //search bar
@@ -48,6 +67,7 @@ export default function Assignments(
       )}
       {/* the heading of the assignments table */}
       <div>
+        <br/><br/>
         <ul id="wd-modules" className="list-group rounded-0">
           <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
             <div className="wd-title p-3 ps-2 bg-secondary">
@@ -61,16 +81,15 @@ export default function Assignments(
 
               {/* the actual assignments  */}
               {assignments
-                .filter((assignment: any) => assignment.course === cid)
                 .map((assignment: any) => (
-                  <li className="wd-lesson list-group-item p-3 ps-1"> 
+                  <li className="wd-lesson list-group-item p-3 ps-1">
                     {currentUser.role == "FACULTY" && (<div>
                       <BsGripVertical className="me-2 fs-3" /><PiNotebookThin className="me-2 fs-3" />
                       <Link
                         to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                       >
-                      {assignment.title}
-                      </Link> 
+                        {assignment.title}
+                      </Link>
                     </div>)}
 
 
@@ -82,9 +101,8 @@ export default function Assignments(
 
                     {currentUser.role == "FACULTY" && (<div>
                       <br /> <LessonControlButtons assignmentId={assignment._id}
-                        deleteAssignment={(assignmentId) => {
-                          dispatch(deleteAssignment(assignmentId))
-                        }} /> </div>)}
+                        deleteAssignment={(assignmentId) => removeAssignment(assignmentId)}
+                      /> </div>)}
                     <p>
                       <span className="red-text">Multiple Modules</span>
                       <b> Not available until</b> {assignment.from} at 12:00am |<br />
