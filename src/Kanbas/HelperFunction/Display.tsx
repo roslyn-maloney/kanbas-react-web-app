@@ -1,11 +1,26 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { courses } from "../Database";
 import { Link } from "react-router-dom";
+import * as courseClient from "../Courses/client";
+//import { deleteEnrollment } from "../Courses/client";
 
 export default function Display() {
     const { currentUser } = useSelector((state: any) => state.accountReducer);
     const [displayed, setdisplay] = useState(true);
+    const dispatch = useDispatch();
+    const unEnroll = async (courseId: string) => {
+        await courseClient.deleteEnrollment(courseId);
+        //reducer here 
+        // dispatch(deleteEnrollment(courseId));
+      };
+
+    const enroll = async (courseId: string, userId: string) => {
+        await courseClient.createEnrollment(courseId, userId);
+        //reducer
+        // dispatchEvent(deleteEnrollment(courseId, userId));
+    }
+    
     const handleElement = () => {
         setdisplay(!displayed);
     }
