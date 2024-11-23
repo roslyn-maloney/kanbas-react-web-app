@@ -14,6 +14,10 @@ export default function Labs() {
       <div className="container-fluid">
         <TOC />
         <h1>Welcome to Web Dev!!</h1>
+        Name: Roslyn Maloney
+        Section: CS4550 sec 1
+        <a id="wd-web-github-link" target="_blank" href="https://github.com/roslyn-maloney/kanbas-react-web-app/tree/a5">WebApp Github:</a>
+        <a id="wd-web-github-link" target="_blank" href="https://github.com/roslyn-maloney/kanbas-node-server-app">ServerApp Github:</a>
         <h1>Labs</h1>
         <Routes>
           <Route path="/" element={<Navigate to="Lab1" />} />
