@@ -13,9 +13,9 @@ export default function Labs() {
     <Provider store={store}>
       <div className="container-fluid">
         <TOC />
-        <h1>Welcome to Web Dev!!</h1>
-        Name: Roslyn Maloney
-        Section: CS4550 sec 1
+        <h1>Welcome to Web Dev!!</h1><br/>
+        Name: Roslyn Maloney<br/>
+        Section: CS4550 sec 1<br/>
         <a id="wd-web-github-link" target="_blank" href="https://github.com/roslyn-maloney/kanbas-react-web-app/tree/a5">WebApp Github:</a>
         <a id="wd-web-github-link" target="_blank" href="https://github.com/roslyn-maloney/kanbas-node-server-app">ServerApp Github:</a>
         <h1>Labs</h1>
