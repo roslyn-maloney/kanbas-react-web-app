@@ -8,7 +8,7 @@ import * as coursesClient from "../client";
 import { setModules, addModule, editModule, updateModule, deleteModule } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import * as modulesClient from "./client";
-import { BiCurrentLocation } from "react-icons/bi";
+
 
 export default function Modules({ currentUser, }: { currentUser: any; }) {
   const { cid } = useParams();
@@ -20,6 +20,7 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
     await modulesClient.updateModule(module);
     dispatch(updateModule(module));
   };
+
 
   const removeModule = async (moduleId: string) => {
     await modulesClient.deleteModule(moduleId);
