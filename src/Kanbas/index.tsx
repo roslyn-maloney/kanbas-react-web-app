@@ -9,28 +9,27 @@ import ProtectedRoute from "./Account/ProtectedRoute";
 import { useSelector } from "react-redux";
 import * as userClient from "./Account/client";
 import * as courseClient from "./Courses/client";
+import * as enrollClient from "./Dashboard/Enrollment/client";
+//import { enrollments } from "./Database";
 
 export default function Kanbas() {
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [courses, setCourses] = useState<any[]>([[]]);
-  
   const [course, setCourse] = useState<any>({
     _id: "1234", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description", image: "/images/course4.jpeg",
   });
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  
   const fetchCourses = async () => {
     try {
       let courses;
-      
-      // Assuming 'user' is an object that holds the user's data and role
-      const userRole = currentUser.role; // or user.type, depending on your system
-      
+      const userRole = currentUser.role; 
       if (userRole === 'FACULTY') {
         // If the user is a faculty member, fetch all courses
-        courses = await courseClient.fetchAllCourses(); // You might have a method to get all courses
+        courses = await courseClient.fetchAllCourses();
       } else if (userRole === 'STUDENT') {
         // If the user is a student, fetch only enrolled courses
-        courses = await userClient.findMyCourses(); // This fetches enrolled courses
+        courses = await userClient.findMyCourses(); 
       } else {
         // Handle case where role is unknown or invalid
         console.error('Unknown user role');
@@ -68,7 +67,6 @@ export default function Kanbas() {
         else { return c; }
     })
   );};
-
 
   
 
