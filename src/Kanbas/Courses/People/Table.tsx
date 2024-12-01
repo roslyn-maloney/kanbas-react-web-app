@@ -1,11 +1,21 @@
+import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { useParams } from "react-router-dom";
-import * as db from "../../Database";
+import { useParams } from "react-router";
+import * as client from "../../Account/client";
+
 
 export default function PeopleTable() {
-    const { cid } = useParams();
-    const { users, enrollments } = db;
-
+    const [users, setUsers] = useState<any[]>([]);
+    const { uid } = useParams();
+    const fetchUsers = async () => {
+        console.log("fetchUsers");
+        const users = await client.findAllUsers();
+        setUsers(users);
+        console.log("fetchUser", users)
+    };
+    useEffect(() => {
+        fetchUsers();
+    }, [uid]);
     return (
         <div id="wd-people-table">
             <table className="table table-striped">
@@ -14,9 +24,6 @@ export default function PeopleTable() {
                 </thead>
                 <tbody>
                     {users
-                        .filter((usr) =>
-                            enrollments.some((enrollment) => enrollment.user === usr._id && enrollment.course === cid)
-                        )
                         .map((user: any) => (
                             <tr key={user._id}>
                                 <td className="wd-full-name text-nowrap">
