@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { useParams } from "react-router";
-import * as client from "../../Account/client";
+// import { useParams } from "react-router";
+// import * as client from "../../Account/client";
 
 
-export default function PeopleTable() {
-    const [users, setUsers] = useState<any[]>([]);
-    const { uid } = useParams();
-    const fetchUsers = async () => {
-        console.log("fetchUsers");
-        const users = await client.findAllUsers();
-        setUsers(users);
-        console.log("fetchUser", users)
-    };
-    useEffect(() => {
-        fetchUsers();
-    }, [uid]);
+export default function PeopleTable({ users = [] }: { users?: any[] } ) {
+    // const [users, setUsers] = useState<any[]>([]);
+    // const { uid } = useParams();
+    // const fetchUsers = async () => {
+    //     console.log("fetchUsers");
+    //     const users = await client.findAllUsers();
+    //     setUsers(users);
+    //     console.log("fetchUser", users)
+    // };
+    // useEffect(() => {
+    //     fetchUsers();
+    // }, [uid]);
     return (
         <div id="wd-people-table">
             <table className="table table-striped">
