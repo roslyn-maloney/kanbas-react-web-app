@@ -9,8 +9,7 @@ import ProtectedRoute from "./Account/ProtectedRoute";
 import { useSelector } from "react-redux";
 import * as userClient from "./Account/client";
 import * as courseClient from "./Courses/client";
-//import * as enrollClient from "./Dashboard/Enrollment/client";
-//import { enrollments } from "./Database";
+
 
 export default function Kanbas() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
