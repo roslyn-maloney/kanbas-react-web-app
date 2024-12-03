@@ -9,6 +9,7 @@ import Editor from "./Assignments/Editor";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import * as client from "../Account/client";
+import * as courseClient from "../Courses/client";
 
 export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
@@ -16,14 +17,23 @@ export default function Courses({ courses }: { courses: any[]; }) {
   const { pathname } = useLocation();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [users, setUsers] = useState<any[]>([]);
-    const { uid } = useParams();
-    const fetchUsers = async () => {
-        const users = await client.findAllUsers();
-        setUsers(users);
-    };
-    useEffect(() => {
-        fetchUsers();
-    }, [uid]);
+  const { uid } = useParams();
+
+
+  const fetchUsers = async () => {
+    let users;
+    if(currentUser.role === "ADMIN"){
+      users = await client.findAllUsers();
+    } else {
+      users = await courseClient.findUsersForCourse(course._id);
+    }
+    setUsers(users);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, [uid]);
+
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
@@ -37,11 +47,10 @@ export default function Courses({ courses }: { courses: any[]; }) {
           <Routes>
             <Route path="/" element={<Navigate to="Home" />} />
             <Route path="Home" element={<Home />} />
-            <Route path="Modules" element={<Modules currentUser={currentUser}/>} />
-            <Route path="Assignments" element={<Assignments currentUser={currentUser}/>} />
+            <Route path="Modules" element={<Modules currentUser={currentUser} />} />
+            <Route path="Assignments" element={<Assignments currentUser={currentUser} />} />
             <Route path="Assignments/:aid" element={<Editor />} />
-            <Route path="People" element={<PeopleTable users={users}/>} />
-            {/* <Route path="People" element={<h2>People</h2>} /> */}
+            <Route path="People" element={<PeopleTable users={users} />} />
           </Routes>
         </div>
       </div>

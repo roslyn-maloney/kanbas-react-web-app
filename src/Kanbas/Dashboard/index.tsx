@@ -11,6 +11,9 @@ export default function Dashboard({
     addNewCourse,
     deleteCourse,
     updateCourse,
+    enrolling,
+    setEnrolling,
+    updateEnrollment
 }: {
     courses: any[];
     course: any;
@@ -19,28 +22,14 @@ export default function Dashboard({
     addNewCourse: () => void;
     deleteCourse: (course: any) => void;
     updateCourse: () => void;
+    enrolling: boolean;
+    setEnrolling: (enrolling: boolean) => void;
+    updateEnrollment: (courseId: string, enrolled: boolean) => void
 }) {
-
-    const [enrollments, setEnrollments] = useState<any[]>([]);
-    const [enroll, setEnroll] = useState<any>({
-        _id: "1234", user: currentUser._id, course: course._id
-    });
-
-    // deleting a enrollment
-    const deleteEnrollment = async (courseId: string, userID: string) => {
-        const status = await enrollClient.unenroll(courseId, userID);
-        setEnrollments(enrollments.filter((e) => e._id !== courseId));
-    };
-
-    // adding a new course 
-    const addEnrollment = async () => {
-        const newEnromllment = await enrollClient.enroll(course._id, currentUser._id);
-        setEnroll([ ...enrollments, newEnromllment]);
-    };
 
     return (
         <div id="wd-dashboard">
-            {currentUser.role === "FACULTY" && (
+            {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
                 <div>
                     <hr />
                     <h5>
@@ -74,7 +63,6 @@ export default function Dashboard({
                         Published Courses ({courses.length})
                     </h2>
                     <hr />
-
                     <div id="wd-dashboard-courses" className="row">
                         <div className="row row-cols-1 row-cols-md-5 g-4">
                             {courses.map((course) => (
@@ -116,6 +104,7 @@ export default function Dashboard({
                                                 >
                                                     Edit
                                                 </button>
+
                                             </div>
                                         </Link>
                                     </div>
@@ -132,8 +121,9 @@ export default function Dashboard({
                         Published Courses ({courses.length})
                     </h2>
                     <hr />
-                    <button className="btn btn-primary float-end mb-2"
-                        id="wd-add-new-course-click">Enrollments</button>
+                    <button onClick={() => setEnrolling(!enrolling)} className="float-end btn btn-primary" >
+                        {enrolling ? "My Courses" : "All Courses"}
+                    </button>
                     <div id="wd-dashboard-courses" className="row">
                         <div className="row row-cols-1 row-cols-md-5 g-4">
                             {courses.map((course) => (
@@ -155,21 +145,14 @@ export default function Dashboard({
                                                     {course.description}
                                                 </p>
                                                 <button className="btn btn-primary">Go</button>
-                                                <button
-                                                    // onClick={(event) => {
-                                                    //     event.preventDefault();
-                                                    //     enrollClient.unenroll(currentUser._id, course._id)
-                                                    // }}
-                                                    className="btn btn-danger float-end"
-                                                    id="wd-delete-course-click">
-                                                    Unenroll
-                                                </button>
-                                                {/* <button onClick={(event) => {
-                                                    event.preventDefault();
-                                                    enrollClient.enroll(currentUser._id, course._id)
-                                                }}>
-                                                    Enroll
-                                                </button> */}
+                                                {enrolling && (
+                                                    <button onClick={(e) => {
+                                                        e.preventDefault();
+                                                        updateEnrollment(course._id, !course.enrolled)
+                                                    }} className={`btn ${course.enrolled ? "btn-danger" : "btn-success"} float-end`} >
+                                                        {course.enrolled ? "Unenroll" : "Enroll"}
+                                                    </button>
+                                                )}
                                             </div>
                                         </Link>
                                     </div>
