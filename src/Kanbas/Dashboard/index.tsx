@@ -29,7 +29,7 @@ export default function Dashboard({
 
     return (
         <div id="wd-dashboard">
-            {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
+            {(currentUser.role === "FACULTY" || currentUser.role === "ADMIN") && (
                 <div>
                     <hr />
                     <h5>

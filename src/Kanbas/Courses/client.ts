@@ -42,7 +42,7 @@ export const findModulesForCourse = async (courseId: string) => {
 
   // assignments 
   export const createAssignment = async (courseId: string, assignment: any) => {
-    const response = await axios.post(
+    const response = await axiosWithCredentials.post(
       `${COURSES_API}/${courseId}/assignments`,
       assignment
     );
@@ -50,7 +50,7 @@ export const findModulesForCourse = async (courseId: string) => {
   };
   
   export const findAssignmentForCourse = async (courseId: string) => {
-    const response = await axios
+    const response = await axiosWithCredentials
       .get(`${COURSES_API}/${courseId}/assignments`);
     return response.data;
   };
