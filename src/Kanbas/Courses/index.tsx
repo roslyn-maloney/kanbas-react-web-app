@@ -4,6 +4,7 @@ import Modules from "./Modules";
 import PeopleTable from "./People/Table";
 import CoursesNavigation from "./Navigation";
 import Assignments from "./Assignments";
+import Quizzes from "./Quizzes";
 import { FaAlignJustify } from "react-icons/fa6";
 import Editor from "./Assignments/Editor";
 import { useSelector } from "react-redux";
@@ -49,6 +50,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
             <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules currentUser={currentUser} />} />
             <Route path="Assignments" element={<Assignments currentUser={currentUser} />} />
+            <Route path="Quizzes" element={<Quizzes currentUser={undefined}></Quizzes>}/>
             <Route path="Assignments/:aid" element={<Editor />} />
             <Route path="People" element={<PeopleTable users={users} />} />
           </Routes>
