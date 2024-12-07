@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import * as client from "../Account/client";
 import * as courseClient from "../Courses/client";
 
+
 export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
@@ -50,9 +51,9 @@ export default function Courses({ courses }: { courses: any[]; }) {
             <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules currentUser={currentUser} />} />
             <Route path="Assignments" element={<Assignments currentUser={currentUser} />} />
-            <Route path="Quizzes" element={<Quizzes currentUser={undefined}></Quizzes>}/>
             <Route path="Assignments/:aid" element={<Editor />} />
             <Route path="People" element={<PeopleTable users={users} />} />
+            <Route path="Quizzes" element={<Quizzes />} />
           </Routes>
         </div>
       </div>
