@@ -51,7 +51,7 @@ export default function Assignments(
           style={{ borderRadius: '10px' }} />
       </div>
 
-      {currentUser.role == "FACULTY" && (
+      {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (
         <div>
           <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={handleAddAssignment}>
             <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
@@ -81,7 +81,7 @@ export default function Assignments(
               {assignments
                 .map((assignment: any) => (
                   <li className="wd-lesson list-group-item p-3 ps-1">
-                    {currentUser.role == "FACULTY" && (<div>
+                    {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (<div>
                       <BsGripVertical className="me-2 fs-3" /><PiNotebookThin className="me-2 fs-3" />
                       <Link
                         to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
@@ -97,7 +97,7 @@ export default function Assignments(
                       </div>)}
 
 
-                    {currentUser.role == "FACULTY" && (<div>
+                    {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (<div>
                       <br /> <LessonControlButtons assignmentId={assignment._id}
                         deleteAssignment={(assignmentId) => removeAssignment(assignmentId)}
                       /> </div>)}
