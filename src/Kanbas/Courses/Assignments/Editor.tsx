@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import * as assignmentClient from "./client";
 import * as coursesClient from "../client";
-import { addAssignment, updateAssignment} from "./reducer";
 
 
 export default function AssignmentEditor() {

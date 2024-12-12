@@ -11,7 +11,6 @@ const modulesSlice = createSlice({
       state.modules = action.payload;
     },
     addModule: (state, { payload: module }) => {
-    
       state.modules = [...state.modules, module] as any;
     },
     deleteModule: (state, { payload: moduleId }) => {
