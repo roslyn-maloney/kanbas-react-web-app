@@ -51,7 +51,18 @@ export default function Assignments(
           style={{ borderRadius: '10px' }} />
       </div>
 
-      {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (
+      {currentUser.role === "FACULTY" && (
+        <div>
+          <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={handleAddAssignment}>
+            <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+            Assignments
+          </button>
+          {/* group button */}
+          <button id="wd-add-module-btn" className="btn btn-lg btn-secondary me-1 float-end">
+            <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+            Group </button><br /><br /><br /><br /> </div>
+      )}
+      {currentUser.role === "ADMIN" && (
         <div>
           <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end" onClick={handleAddAssignment}>
             <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
@@ -65,7 +76,7 @@ export default function Assignments(
       )}
       {/* the heading of the assignments table */}
       <div>
-        <br/><br/>
+        <br /><br />
         <ul id="wd-modules" className="list-group rounded-0">
           <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
             <div className="wd-title p-3 ps-2 bg-secondary">
@@ -81,7 +92,16 @@ export default function Assignments(
               {assignments
                 .map((assignment: any) => (
                   <li className="wd-lesson list-group-item p-3 ps-1">
-                    {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (<div>
+                    {currentUser.role == "FACULTY" && (<div>
+                      <BsGripVertical className="me-2 fs-3" /><PiNotebookThin className="me-2 fs-3" />
+                      <Link
+                        to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                      >
+                        {assignment.title}
+                      </Link>
+                    </div>)}
+
+                    {currentUser.role === "ADMIN" && (<div>
                       <BsGripVertical className="me-2 fs-3" /><PiNotebookThin className="me-2 fs-3" />
                       <Link
                         to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
@@ -91,16 +111,22 @@ export default function Assignments(
                     </div>)}
 
 
-                    {currentUser.role == "STUDENT" && (
+                    {currentUser.role === "STUDENT" && (
                       <div>
                         <BsGripVertical className="me-2 fs-3" /><PiNotebookThin className="me-2 fs-3" />{assignment.title}
                       </div>)}
 
 
-                    {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (<div>
+                    {currentUser.role === "FACULTY" && (<div>
                       <br /> <LessonControlButtons assignmentId={assignment._id}
                         deleteAssignment={(assignmentId) => removeAssignment(assignmentId)}
-                      /> </div>)}
+                      /> </div>
+                    )}
+                    {currentUser.role === "ADMIN" && (<div>
+                      <br /> <LessonControlButtons assignmentId={assignment._id}
+                        deleteAssignment={(assignmentId) => removeAssignment(assignmentId)}
+                      /> </div>
+                    )}
                     <p>
                       <span className="red-text">Multiple Modules</span>
                       <b> Not available until</b> {assignment.from} at 12:00am |<br />

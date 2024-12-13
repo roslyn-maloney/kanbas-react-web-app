@@ -44,7 +44,12 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
 
   return (
     <div>
-      {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (
+      {currentUser.role === "FACULTY" && (
+        <div>
+          <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={createModuleForCourse} />
+        </div>
+      )}
+      {currentUser.role === "ADMIN" && (
         <div>
           <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={createModuleForCourse} />
         </div>
@@ -55,7 +60,7 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
         {modules
           .map((module: any) => (
             <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
-              {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (<div>
+              {currentUser.role === "FACULTY" && (<div>
                 <div className="wd-title p-3 ps-2 bg-secondary">
                   <BsGripVertical className="me-2 fs-3" />
                   {!module.editing && module.name}
@@ -75,6 +80,25 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
                     editModule={(moduleId) => dispatch(editModule(moduleId))} />
                 </div></div>
               )}
+              {currentUser.role === "ADMIN" && (<div>
+                <div className="wd-title p-3 ps-2 bg-secondary">
+                  <BsGripVertical className="me-2 fs-3" />
+                  {!module.editing && module.name}
+                  {module.editing && (
+                    <input className="form-control w-50 d-inline-block"
+                      onChange={(e) => dispatch(updateModule({ ...module, name: e.target.value }))}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          saveModule({ ...module, editing: false });
+                        }
+                      }}
+                      defaultValue={module.name} />
+                  )}
+                  <ModuleControlButtons moduleId={module._id}
+                    deleteModule={(moduleId) => removeModule(moduleId)}
+                    editModule={(moduleId) => dispatch(editModule(moduleId))} />
+                </div></div>
+              )}
               {currentUser.role == "STUDENT" && (<div>
                 <div className="wd-title p-3 ps-2 bg-secondary">
                   {module.name}
@@ -84,7 +108,7 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
                 <ul className="wd-lessons list-group rounded-0">
                   {module.lessons.map((lesson: any) => (
                     <li className="wd-lesson list-group-item p-3 ps-1">
-                      <BsGripVertical className="me-2 fs-3" /> {lesson.name} {currentUser.role == "FACULTY" || currentUser.role == "ADMIN" && (<LessonControlButtons />)}
+                      <BsGripVertical className="me-2 fs-3" /> {lesson.name} {currentUser.role === "FACULTY" && (<LessonControlButtons />)} {currentUser.role === "ADMIN" && (<LessonControlButtons />)}
                     </li>
                   ))}
                 </ul>)}

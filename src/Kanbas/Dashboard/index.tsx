@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import * as enrollClient from "../Dashboard/Enrollment/client";
 import { useSelector } from "react-redux";
+import { current } from "@reduxjs/toolkit";
 
 export default function Dashboard({
     courses,
@@ -67,9 +68,11 @@ export default function Dashboard({
                         Published Courses ({courses.length})
                     </h2>
                     <hr />
+                    {(currentUser.role === "STUDENT" || currentUser.role === "FACULTY") && (
                     <button onClick={() => setEnrolling(!enrolling)} className="float-end btn btn-primary" >
                         {enrolling ? "My Courses" : "All Courses"}
                     </button>
+                    )}
                     <div id="wd-dashboard-courses" className="row">
                         <div className="row row-cols-1 row-cols-md-5 g-4">
                             {courses.map((course) => (
@@ -90,6 +93,7 @@ export default function Dashboard({
                                                 >
                                                     {course.description}
                                                 </p>
+                                                <div>
                                                 <button className="btn btn-primary">Go</button>
                                                 {!enrolling && (currentUser.role === "FACULTY" || currentUser.role === "ADMIN") && (
                                                     <div>
@@ -114,6 +118,7 @@ export default function Dashboard({
                                                         </button>
                                                     </div>
                                                 )}
+                                                </div>
                                                 {enrolling && (
                                                     <button onClick={(e) => {
                                                         e.preventDefault();
